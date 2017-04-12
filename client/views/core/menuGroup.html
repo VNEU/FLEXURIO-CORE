@@ -1,0 +1,108 @@
+
+
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='menuGroup'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+          <!-- HEADER LISTVIEW -->
+          <div class='list-group panel panel-default headerApp'>
+            {{>headerListview}}
+
+            {{#each menuGroups}}
+                <div class='list-group-item'>
+                    <div class='row-content'>
+                        <BR>
+                        <p class='{{iconMENUGROUP}}'>
+                          {{namaMENUGROUP}}
+                        </p>
+
+                        <div class='least-content' style='top:20px;'>
+                          <a class="detailData" style="color:blue;" data-toggle="tooltip" title="EDIT DATA"><span class="glyphicon glyphicon-align-justify"></span></a> &nbsp;&nbsp;&nbsp;
+                          {{>actionListview}}
+                        </div>
+                    </div>
+                </div>
+
+
+                {{#if isEditing}}
+            	    {{>blockModals}}
+            	    <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                    <div class='col-md-12'>
+                      <div class='form-group label-floating has-info col-md-12'>
+                          <label for='namaEditMENUGROUP' class='control-label'>NAMA MENU GROUP</label>
+                          <input name='namaEditMENUGROUP' id='namaEditMENUGROUP' type='text' class='form-control' style='font-size:larger;' value='{{namaMENUGROUP}}'>
+                      </div>
+
+                      <div class='form-group label-floating has-info col-md-4'>
+                        <label for='groupLocations' class='control-label'>LOCATIONS</label>
+                        <select class='form-control' id="groupLocationsEDIT" name="groupLocationsEDIT">
+                          <option value="{{locationsMENUGROUP}}">{{locationsMENUGROUP}}</option>
+                          <option value="1. Top Locations">1. Top Locations</option>
+                          <option value="2. Middle Locations">2. Middle Locations</option>
+                          <option value="3. Bottom Locations">3. Bottom Locations</option>
+                        </select>
+                      </div>
+
+                      <div class='form-group label-floating has-info col-md-8'>
+                          <label for='iconEditMENUGROUP' class='control-label'>ICON MENU GROUP</label>
+                          <input name='iconEditMENUGROUP' id='iconEditMENUGROUP' type='text' class='form-control' style='font-size:larger;' value='{{iconMENUGROUP}}'>
+                      </div>
+
+                    </div>
+
+                    <div class='pull-right'>
+                      <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                    </div>
+            	    </div>
+                {{/if}}
+
+
+            {{/each}}
+          </div>
+        </div>
+
+    {{#if isCreating}}
+	    {{>blockModals}}
+	    <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+        <div class='col-md-12'>
+          <div class='form-group label-floating has-info col-md-12'>
+              <label for='namaMENUGROUP' class='control-label'>NAMA MENU GROUP</label>
+              <input name='namaMENUGROUP' id='namaMENUGROUP' type='text' class='form-control' style='font-size:larger;'>
+          </div>
+
+          <div class='form-group label-floating has-info col-md-4'>
+            <label for='groupLocations' class='control-label'>LOCATIONS</label>
+            <select class='form-control' id="groupLocations" name="groupLocations">
+              <option value=""></option>
+              <option value="1. Top Locations">1. Top Locations</option>
+              <option value="2. Middle Locations">2. Middle Locations</option>
+              <option value="3. Bottom Locations">3. Bottom Locations</option>
+            </select>
+          </div>
+
+          <div class='form-group label-floating has-info col-md-8'>
+              <label for='iconMENUGROUP' class='control-label'>ICON MENU GROUP</label>
+              <input name='iconMENUGROUP' id='iconMENUGROUP' type='text' class='form-control' style='font-size:larger;'>
+          </div>
+        </div>
+
+        <div class='pull-right'>
+          <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+        </div>
+	    </div>
+    {{/if}}
+
+    {{#if isDeleting}}
+      {{>formDeleting}}
+    {{/if}}
+
+    </div>
+
+
+</template>

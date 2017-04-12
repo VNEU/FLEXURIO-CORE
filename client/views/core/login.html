@@ -1,0 +1,76 @@
+<template name="login">
+    {{>blockBackground}}
+    <div class="center_page input shadow-z-6 animasiSampingKanan" align="center">
+        <BR>
+        <div style="color: {{sHeaderBackground}};">
+            {{#if isLogin}}
+                <form class="login-server">
+                    <div class="form-group has-info" style="width: 90%;" align="left">
+                        <div class="form-group label-floating has-info">
+                            <label for="username" class="control-label" style="color: {{sHeaderBackground}};">Email</label>
+                            <input type="text" class="form-control" id="username" name="username" style="color: {{sHeaderBackground}};">
+                        </div>
+                        <div class="form-group label-floating has-info">
+                            <label for="password" class="control-label" style="color: {{sHeaderBackground}};">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" style="color: {{sHeaderBackground}};">
+                        </div>
+
+                        <button type="submit" class="btn btn-raised btn-sm navbar-left" style="position:absolute;left: 20px;color:white;background-color: {{sHeaderBackground}}">LOGIN</button>
+                        <a href="#" class="registerForm btn btn-sm navbar-left" style="position:absolute;right: 30px;color:white;">REGISTER</a>
+                        <BR><BR>
+                        <HR>
+                        <div class="col-md-12" align="center">
+                            <p style="color: darkgray;font-size: small;" href="#">Atau login dg Social Media</p>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center">
+                            <a id="loginGoogle" class="btn btn-fab btn-fab-mini" style="color: white;background-color: white;" href="#">
+                                <i class="mdi mdi-google-plus" style="position: relative;top: 7px;color: red;"></i>
+                            </a><BR>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center">
+                            <a id="loginFacebook" class="btn btn-fab btn-fab-mini" style="background-color: white;top: 10%;" href="#">
+                                <i class="mdi mdi-facebook" style="position: relative;top: 7px;color: dodgerblue;"></i>
+                            </a><BR>
+                        </div>
+                        <BR><BR><BR><BR><BR>
+                    </div>
+                </form>
+            {{else}}
+                <form class="register-server">
+                    <div class="form-group" style="width: 90%;" align="left">
+                        <div class="form-group label-floating has-info">
+                            <label for="textFirstName" class="control-label" style="color: {{sHeaderBackground}};">First Name</label>
+                            <input type="text" class="form-control" id="textFirstName" name="textFirstName" style="color: {{sHeaderBackground}};">
+                        </div>
+                        <div class="form-group label-floating has-info">
+                            <label for="textLastName" class="control-label" style="color: {{sHeaderBackground}};">Last Name</label>
+                            <input type="text" class="form-control" id="textLastName" name="textLastName" style="color: {{sHeaderBackground}};">
+                        </div>
+
+                        <div class="form-group label-floating has-info">
+                            <label for="textEmail" class="control-label" style="color: {{sHeaderBackground}};">Email</label>
+                            <input type="email" class="form-control" id="textEmail" name="textEmail" style="color: {{sHeaderBackground}};">
+                        </div>
+
+                        <div class="form-group label-floating has-info">
+                            <label for="textPassword" class="control-label" style="color: {{sHeaderBackground}};">Password</label>
+                            <input type="password" class="form-control" id="textPassword" name="textPassword" style="color: {{sHeaderBackground}};">
+                        </div>
+                        <div class="form-group label-floating has-info">
+                            <label for="textPasswordRetype" class="control-label" style="color: {{sHeaderBackground}};">Retype Password</label>
+                            <input type="password" class="form-control" id="textPasswordRetype" name="textPasswordRetype" style="color: {{sHeaderBackground}};">
+                        </div>
+
+                        <BR>
+                        <button type="submit" class="btn btn-raised btn-sm navbar-left" style="background-color: #15794F;color:white;">
+                            Register
+                        </button>
+                        <a href="#" class="registerLogin btn btn-default btn-sm navbar-left" style="position:absolute;right: 30px;color:white;">LOGIN</a>
+                        <BR><BR>
+                    </div>
+                </form>
+            {{/if}}
+
+        </div>
+    </div>
+</template>

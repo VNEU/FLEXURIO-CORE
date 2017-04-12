@@ -1,0 +1,44 @@
+
+
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='activitylogs'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+          <!-- HEADER LISTVIEW -->
+          <div class='list-group panel panel-default headerApp'>
+            {{>headerListview}}
+
+            {{#each activitylogss}}
+                <div class='list-group-item'>
+                    <div class='row-content'>
+                        <BR>
+                        <p style="font-size:large;">
+                          {{kodeACTIVITYLOGS}}
+                        </p>
+                        <p>
+                          {{namaACTIVITYLOGS}}
+                        </p>
+
+                        <div class='least-content' style='top:20px;'>
+                          <a class="deleteData" style="color:red;"  data-toggle="tooltip" title="DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+            {{/each}}
+          </div>
+        </div>
+
+    {{#if isDeleting}}
+      {{>formDeleting}}
+    {{/if}}
+
+    </div>
+
+
+</template>

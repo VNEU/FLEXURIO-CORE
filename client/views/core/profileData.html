@@ -1,0 +1,56 @@
+
+
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='profileData'>
+    <div class='container-fluid app'>
+        <div class='row main col-md-12'>
+
+          <!-- HEADER LISTVIEW -->
+          <div class='list-group panel panel-default headerApp'>
+            {{>headerListview}}
+
+            {{#each profileDatas}}
+                <div class='list-group-item'>
+                    <div class='row-content'>
+                        <BR>
+                        <p>
+                          {{kodePROFILEDATA}} - {{namaPROFILEDATA}}
+                        </p>
+
+                        <div class='least-content' style='top:20px;'>
+                          {{>actionListview}}
+                        </div>
+                    </div>
+                </div>
+
+
+                {{#if isEditing}}
+            	    {{>blockModals}}
+            	    <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                    <div class='col-md-12'>
+                      <div class='form-group label-floating has-info col-md-4'>
+                          <label for='kodeEditPROFILEDATA' class='control-label'>KODE PROFILEDATA</label>
+                          <input name='kodeEditPROFILEDATA' id='kodeEditPROFILEDATA' type='text' class='form-control' style='font-size:larger;' value='{{kodePROFILEDATA}}'>
+                      </div>
+                      <div class='form-group label-floating has-info col-md-8'>
+                          <label for='namaEditPROFILEDATA' class='control-label'>NAMA PROFILEDATA</label>
+                          <input name='namaEditPROFILEDATA' id='namaEditPROFILEDATA' type='text' class='form-control' style='font-size:larger;' value='{{namaPROFILEDATA}}'>
+                      </div>
+                    </div>
+
+                    <div class='pull-right'>
+                      <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                    </div>
+            	    </div>
+                {{/if}}
+
+
+            {{/each}}
+          </div>
+        </div>
+    </div>
+
+
+</template>

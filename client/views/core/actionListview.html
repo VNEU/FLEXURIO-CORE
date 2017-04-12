@@ -1,0 +1,8 @@
+<template name="actionListview">
+   {{#if isActionEDIT }}
+      <a class="editData" style="color:orange;" data-toggle="tooltip" title="EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;
+   {{/if}}
+   {{#if isActionDELETE}}
+      <a class="deleteData" style="color:red;"  data-toggle="tooltip" title="DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
+   {{/if}}
+</template>

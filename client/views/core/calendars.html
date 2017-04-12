@@ -1,0 +1,199 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='calendars'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+
+        <div style="position: fixed; bottom: 20px; left: 230px;z-index: 1000;" class="animasiAtas">
+            <a href="#" class="ViewAgendaDay btn btn-raised shadow-z-4 shadow-z-2" style="color: {{sHeaderBackground}};">Day</a>
+        </div>
+        <div style="position: fixed; bottom: 20px; left: 140px;z-index: 1000;" class="animasiAtas">
+            <a href="#" class="ViewAgendaWeek btn btn-raised shadow-z-4 shadow-z-2" style="color: {{sHeaderBackground}};">Week</a>
+        </div>
+        <div style="position: fixed; bottom: 20px; left: 40px;z-index: 1000;" class="animasiAtas">
+            <a href="#" class="ViewMonth btn btn-raised shadow-z-4 shadow-z-2" style="color: {{sHeaderBackground}};">Month</a>
+        </div>
+
+
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+
+            <!-- HEADER LISTVIEW -->
+            <div class='list-group panel panel-default shadow-z-4 headerApp'>
+                {{>headerListview}}
+
+                <div id='calendars' class="jumbotron"></div>
+
+
+                {{#each calendars}}
+                    <div class='list-group-item'>
+                        <div class='row-content'>
+                            <BR>
+                            <p>
+                                {{startdate}} -  {{enddate}} -  {{namaevent}} -  {{lokasi}} -  {{latlokasi}} -  {{lnglokasi}} -  {{keterangan}} -  {{notificationdate}} -  {{repeatdays}} -
+                            </p>
+
+                            <div class='least-content' style='top:20px;'>
+                                {{>actionListview}}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{>flxcomments}}
+
+                    {{#if isEditing}}
+                        {{>blockModals}}
+                        <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                            <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='startdateEditCALENDARS' class='control-label'>STARTDATE CALENDARS</label>
+                                    <input name='startdateEditCALENDARS' id='startdateEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{startdate}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='enddateEditCALENDARS' class='control-label'>ENDDATE CALENDARS</label>
+                                    <input name='enddateEditCALENDARS' id='enddateEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{enddate}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='namaeventEditCALENDARS' class='control-label'>NAMAEVENT CALENDARS</label>
+                                    <input name='namaeventEditCALENDARS' id='namaeventEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{namaevent}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='lokasiEditCALENDARS' class='control-label'>LOKASI CALENDARS</label>
+                                    <input name='lokasiEditCALENDARS' id='lokasiEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{lokasi}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='latlokasiEditCALENDARS' class='control-label'>LATLOKASI CALENDARS</label>
+                                    <input name='latlokasiEditCALENDARS' id='latlokasiEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{latlokasi}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='lnglokasiEditCALENDARS' class='control-label'>LNGLOKASI CALENDARS</label>
+                                    <input name='lnglokasiEditCALENDARS' id='lnglokasiEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{lnglokasi}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='keteranganEditCALENDARS' class='control-label'>KETERANGAN CALENDARS</label>
+                                    <input name='keteranganEditCALENDARS' id='keteranganEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{keterangan}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='notificationdateEditCALENDARS' class='control-label'>NOTIFICATIONDATE CALENDARS</label>
+                                    <input name='notificationdateEditCALENDARS' id='notificationdateEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{notificationdate}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='repeatdaysEditCALENDARS' class='control-label'>REPEATDAYS CALENDARS</label>
+                                    <input name='repeatdaysEditCALENDARS' id='repeatdaysEditCALENDARS' type='text' class='form-control' style='font-size:larger;' value='{{repeatdays}}'>
+                                </div>
+
+
+                            </div>
+
+                            <div class='pull-right'>
+                                <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+            {{>menuLoadMore}}
+        </div>
+
+        {{#if isCreating}}
+            {{>blockModals}}
+            <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='startdateCALENDARS' class='control-label'>STARTDATE CALENDARS</label>
+                        <input name='startdateCALENDARS' id='startdateCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='enddateCALENDARS' class='control-label'>ENDDATE CALENDARS</label>
+                        <input name='enddateCALENDARS' id='enddateCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='namaeventCALENDARS' class='control-label'>NAMAEVENT CALENDARS</label>
+                        <input name='namaeventCALENDARS' id='namaeventCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='lokasiCALENDARS' class='control-label'>LOKASI CALENDARS</label>
+                        <input name='lokasiCALENDARS' id='lokasiCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='latlokasiCALENDARS' class='control-label'>LATLOKASI CALENDARS</label>
+                        <input name='latlokasiCALENDARS' id='latlokasiCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='lnglokasiCALENDARS' class='control-label'>LNGLOKASI CALENDARS</label>
+                        <input name='lnglokasiCALENDARS' id='lnglokasiCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='keteranganCALENDARS' class='control-label'>KETERANGAN CALENDARS</label>
+                        <input name='keteranganCALENDARS' id='keteranganCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='notificationdateCALENDARS' class='control-label'>NOTIFICATIONDATE CALENDARS</label>
+                        <input name='notificationdateCALENDARS' id='notificationdateCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='repeatdaysCALENDARS' class='control-label'>REPEATDAYS CALENDARS</label>
+                        <input name='repeatdaysCALENDARS' id='repeatdaysCALENDARS' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                </div>
+
+                <div class='pull-right'>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDeleting}}
+            {{>formDeleting}}
+        {{/if}}
+    </div>
+
+
+    {{#if isShowEvent}}
+        <div class="col-xs-10 col-sm-5 col-md-5 animasiSampingKiri shadow-z-2 jumbotron" style="z-index: 4000; position: fixed;top: 0px;right: 0px;height: 100%;overflow: scroll;">
+        </div>
+    {{/if}}
+</template>
+
+    

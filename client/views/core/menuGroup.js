@@ -1,0 +1,226 @@
+/**
+ * Generated from flexurio tools
+ * Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077
+ */
+
+
+import {Session} from "meteor/session";
+
+Template.menuGroup.created = function () {
+    Session.set('limit', 50); Session.set('oFILTERS', {}); Session.set('oOPTIONS', {});
+    Session.set('textSearch', '');
+    Session.set('namaHeader', 'DATA MENU GROUP');
+    Session.set('dataDelete', '');
+    Session.set('isCreating', false); Session.set('isEditing', false);
+    Session.set('isDeleting', false);
+
+    this.autorun(function () {
+        subscribtion('menuGroup', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
+    });
+};
+
+Template.menuGroup.onRendered(function () {
+    ScrollHandler();
+});
+
+
+Template.menuGroup.helpers({
+    isLockMenu: function () {
+        return isLockMenu();
+    },
+
+    isEditing: function () {
+        return Session.get('idEditing') === this._id;
+    },
+    isDeleting: function () {
+        return Session.get('isDeleting');
+    },
+    isCreating: function () {
+        return Session.get('isCreating');
+    },
+    menuGroups: function () {
+        let textSearch = '';
+        if (adaDATA(Session.get('textSearch'))) {
+            textSearch = Session.get('textSearch').replace('#', '').trim();
+        }
+
+        let oFILTERS = {
+            $or: [
+                {namaMENUGROUP: {$regex: textSearch, $options: 'i'}},
+                {iconMENUGROUP: {$regex: textSearch, $options: 'i'}},
+                {_id: {$regex: textSearch, $options: 'i'}},
+            ],
+            aktifYN: 1
+        };
+
+        let oOPTIONS = {
+            sort: {locationsMENU: 1},
+            limit: Session.get('limit')
+        };
+
+        Session.set('oOPTIONS', oOPTIONS);
+        Session.set('oFILTERS', oFILTERS);
+
+        return MENUGROUP.find(
+            oFILTERS,
+            oOPTIONS
+        );
+    }
+});
+
+Template.menuGroup.events({
+
+    'click a.detailData': function (e, tpl) {
+        e.preventDefault();
+        Session.set('groupMENU', this.namaMENUGROUP);
+        Router.go("menu");
+    },
+
+    'click a.cancel': function (e, tpl) {
+        e.preventDefault();
+        Session.set('isCreating', false); Session.set('isEditing', false);
+        Session.set('idEditing', '');
+        Session.set('isDeleting', false);
+    },
+
+    'click a.deleteDataOK': function (e, tpl) {
+        e.preventDefault();
+        deleteMENUGROUP();
+        FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
+        Session.set('isDeleting', false);
+    },
+    'click a.deleteData': function (e, tpl) {
+        e.preventDefault();
+        Session.set('isDeleting', true);
+        Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaMENUGROUP);
+        Session.set('idDeleting', this._id);
+    },
+
+    'click a.create': function (e, tpl) {
+        e.preventDefault();
+        Session.set('isCreating', true);
+    },
+    'keyup #namaMENUGROUP': function (e, tpl) {
+        e.preventDefault();
+        if (e.keyCode == 13) {
+            insertMENUGROUP(tpl);
+        }
+    },
+    'click a.save': function (e, tpl) {
+        e.preventDefault();
+        insertMENUGROUP(tpl);
+    },
+
+    'click a.editData': function (e, tpl) {
+        e.preventDefault();
+        Session.set('idEditing', this._id);
+    },
+    'keyup #namaEditMENUGROUP': function (e, tpl) {
+        e.preventDefault();
+        if (e.keyCode == 13) {
+            updateMENUGROUP(tpl);
+        }
+    },
+    'click a.saveEDIT': function (e, tpl) {
+        e.preventDefault();
+        updateMENUGROUP(tpl);
+    }
+
+});
+
+
+insertMENUGROUP = function (tpl) {
+
+    let namaMENUGROUP = tpl.$('input[name="namaMENUGROUP"]').val();
+    let iconMENUGROUP = tpl.$('input[name="iconMENUGROUP"]').val();
+    let locationsMENUGROUP = SelectedTerpilih('groupLocations');
+
+
+    if (!adaDATA(iconMENUGROUP) | !adaDATA(namaMENUGROUP)) {
+        FlashMessages.sendWarning('Please complete all of the data to be . . .');
+        return;
+    }
+
+    MENUGROUP.insert(
+        {
+            namaMENUGROUP: namaMENUGROUP.toUpperCase(),
+            iconMENUGROUP: iconMENUGROUP,
+            locationsMENUGROUP: locationsMENUGROUP,
+            aktifYN: 1,
+            createByID: userid(),
+            createBy: username(),
+            createAt: new Date()
+        },
+        function (err, id) {
+            if (err) {
+                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+            } else {
+                Session.set('isCreating', false);
+                FlashMessages.sendSuccess('Thanks, your data is successfully saved');
+            }
+        }
+    );
+};
+
+
+updateMENUGROUP = function (tpl) {
+
+
+    let namaEditMENUGROUP = tpl.$('input[name="namaEditMENUGROUP"]').val();
+    let iconEditMENUGROUP = tpl.$('input[name="iconEditMENUGROUP"]').val();
+    let locationsMENUGROUP = SelectedTerpilih('groupLocationsEDIT');
+
+
+    if (!adaDATA(iconEditMENUGROUP) | !adaDATA(namaEditMENUGROUP)) {
+        FlashMessages.sendWarning('Please complete all of the data to be . . .');
+        return;
+    }
+
+    MENUGROUP.update({_id: Session.get('idEditing')},
+        {
+            $set: {
+                namaMENUGROUP: namaEditMENUGROUP.toUpperCase(),
+                iconMENUGROUP: iconEditMENUGROUP,
+                locationsMENUGROUP: locationsMENUGROUP,
+                updateByID: userid(),
+                updateBy: username(),
+                updateAt: new Date()
+            }
+        },
+        function (err, id) {
+            if (err) {
+                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+            } else {
+                Session.set('idEditing', '');
+                FlashMessages.sendSuccess('Thanks, your data is successfully saved');
+            }
+        }
+    );
+};
+
+deleteMENUGROUP = function () {
+
+    if (!adaDATA(Session.get('idDeleting'))) {
+        FlashMessages.sendWarning('Please select data that you want to remove . . .');
+        return;
+    }
+
+    MENUGROUP.update({_id: Session.get('idDeleting')},
+        {
+            $set: {
+                aktifYN: 0,
+                deleteByID: userid(),
+                deleteBy: username(),
+                deleteAt: new Date()
+            }
+        },
+        function (err, id) {
+            if (err) {
+                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+            } else {
+                Session.set('idEditing', '');
+                FlashMessages.sendSuccess('Thanks, your data is successfully saved');
+            }
+        }
+    );
+};

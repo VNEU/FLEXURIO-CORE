@@ -1,0 +1,72 @@
+<template name="menuSearch">
+    {{#if isSearch}}
+        <div style="position: fixed; bottom: 20px; right: 40px; width: 270px;z-index: 1000;" class="animasiSampingKiri">
+            <div class="form-group label-floating has-info">
+                <label for="searchBox" class="control-label" style="color: {{sGeneralFont}};">Search</label>
+                <input name="searchBox" id="searchBox" type="text" class="form-control has-info" style="font-size: medium;color: {{sGeneralFont}};border-color: color: {{sGeneralFont}};">
+            </div>
+        </div>
+    {{else}}
+        <div style="position: fixed; bottom: 20px; right: 20px;z-index: 1000;" class="animasiAtas">
+            <a class="searchBtn btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE8B6;</i></a>
+        </div>
+    {{/if}}
+</template>
+<template name="menuAdd">
+    <div style="position: fixed; bottom: 80px; right: 20px;z-index: 1000;" class="animasiAtas">
+        <a href="#" class="create btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE145;</i></a>
+    </div>
+</template>
+<template name="menuDownload">
+    <div style="position: fixed; bottom: 20px; right: 80px;z-index: 1000;" class="animasiAtas">
+        <a href="#" class="download btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE2C0;</i></a>
+    </div>
+</template>
+<template name="menuUpload">
+    {{#if isUpload}}
+        {{>blockModals}}
+        <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+            <div class='col-md-12'>
+                <div class="input-group col-md-12">
+                    <input type="file" class="form-control col-md-12" id="uploadCSV" accept=".csv">
+                </div>
+            </div>
+
+            <div class='pull-right'>
+                <a class='saveUpload btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+            </div>
+        </div>
+    {{else}}
+        <div style="position: fixed; bottom: 140px; right: 20px;z-index: 1000;" class="animasiAtas">
+            <a href="#" class="upload btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE2C3;</i></a>
+        </div>
+    {{/if}}
+</template>
+<template name="menuPrint">
+    <div style="position: fixed; bottom: 20px; right: 20px;z-index: 1000;">
+        <a href="#" class="print btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2 animasiAtas" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE8AD;</i></a>
+    </div>
+</template>
+<template name="menuReport">
+    <div style="position: fixed; bottom: 200px; right: 20px;z-index: 1000;">
+        <a href="#" class="report btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2 animasiAtas" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE434;</i></a>
+    </div>
+</template>
+<template name="menuBack">
+    <div style="position: fixed; bottom: 140px; right: 20px;z-index: 1000;">
+        <a href="#" class="back btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2 animasiAtas" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE5C4;</i></a>
+    </div>
+</template>
+<template name="menuBackBottom">
+    <div style="position: fixed; bottom: 20px; right: 140px;z-index: 1000;">
+        <a href="#" class="back btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2 animasiAtas" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};"><i class="material-icons">&#xE5C4;</i></a>
+    </div>
+</template>
+<template name="menuLoadMore">
+    <a href="#" class="loadmore btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2 animasiAtas" style="background-color:{{sGeneralFontBackground}};color:{{sGeneralFont}};position:absolute;right:50%;"><i class="material-icons">&#xE5CF;</i></a>
+</template>
+<template name="footNoteReport">
+    <div style="position: fixed; bottom: 20px; left: 20px;z-index: 1000;">
+        <a href="#" class="print" style="color:{{sHeaderBackground}};font-size: smaller;"> Print By {{username}} at {{datePrint}} </a>
+    </div>
+</template>

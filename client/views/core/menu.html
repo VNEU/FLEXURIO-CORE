@@ -1,0 +1,95 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='menu'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+        {{>menuBack}}
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+            <!-- HEADER LISTVIEW -->
+            <div class='list-group panel panel-default headerApp'>
+                {{>headerListview}}
+
+                {{#each menus}}
+                    <div class='list-group-item'>
+                        <div class='row-content'>
+                            <BR>
+                            <p>
+                                <a href="{{routerMENU}}" style="font-size:larger;text-decoration: none;" class='detailData {{iconMENU}}'>
+                                    {{namaMENU}} / {{routerMENU}}
+                                </a>
+                            </p>
+
+                            <div class='least-content' style='top:20px;'>
+                                <a class="editData" style="color:orange;" data-toggle="tooltip" title="EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;
+                                <a class="deleteData" style="color:red;" data-toggle="tooltip" title="DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {{#if isEditing}}
+                        {{>blockModals}}
+                        <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                            <div class='col-md-12'>
+                                <div class='form-group label-floating has-info col-md-12'>
+                                    <label for='namaEditMENU' class='control-label'>Nama MENU</label>
+                                    <input name='namaEditMENU' id='namaEditMENU' type='text' class='form-control' style='font-size:larger;' value='{{namaMENU}}'>
+                                </div>
+                                <div class='form-group label-floating has-info col-md-8'>
+                                    <label for='routerEditMENU' class='control-label'>Router MENU</label>
+                                    <input name='routerEditMENU' id='routerEditMENU' type='text' class='form-control' style='font-size:larger;' value='{{routerMENU}}'>
+                                </div>
+                                <div class='form-group label-floating has-info col-md-4'>
+                                    <label for='iconEditMENU' class='control-label'>Icon MENU</label>
+                                    <input name='iconEditMENU' id='iconEditMENU' type='text' class='form-control' style='font-size:larger;' value='{{iconMENU}}'>
+                                </div>
+
+                            </div>
+
+                            <div class='pull-right'>
+                                <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                            </div>
+                        </div>
+                    {{/if}}
+
+
+                {{/each}}
+            </div>
+        </div>
+
+        {{#if isCreating}}
+            {{>blockModals}}
+            <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12'>
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='namaMENU' class='control-label'>Nama MENU</label>
+                        <input name='namaMENU' id='namaMENU' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-8'>
+                        <label for='routerMENU' class='control-label'>Router MENU</label>
+                        <input name='routerMENU' id='routerMENU' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-4'>
+                        <label for='iconMENU' class='control-label'>Icon MENU</label>
+                        <input name='iconMENU' id='iconMENU' type='text' class='form-control' style='font-size:larger;' value="glyphicon glyphicon-menu-right">
+                    </div>
+                </div>
+
+                <div class='pull-right'>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDeleting}}
+            {{>formDeleting}}
+        {{/if}}
+
+    </div>
+
+
+</template>

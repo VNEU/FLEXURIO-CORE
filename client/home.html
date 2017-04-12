@@ -1,0 +1,33 @@
+<head>
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <title>Flexurio App</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="description" content="Ease in generating code for your App"/>
+    <meta name="keywords" content="Node, Meteor, Framework, foundation, generate code"/>
+</head>
+<body style="font-family: 'Raleway', sans-serif;">
+</body>
+<template name="home">
+    {{#if currentUser}}
+        {{else}}
+        {{>login}}
+    {{/if}}
+
+    {{> progressbar}}
+    {{> header}}
+    {{> flashTemplates}}
+
+    <div class="container-fluid" style="position: relative;top: 41px;">
+        <div class="row main col-md-9 col-md-offset-3">
+            {{> sidebar}}
+        </div>
+    </div>
+    {{> profilebar}}
+
+    <div class='row main col-md-9 col-md-offset-3'>
+      <BR><BR><BR>
+      {{>flxchart tipe="DOUGHNUT" id="pie" data=dataCircle width="400" height="400"}}
+  </div>
+</template>

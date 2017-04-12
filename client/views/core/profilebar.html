@@ -1,0 +1,26 @@
+<template name="profilebar">
+    <div class="col-xs-10 col-sm-5 col-md-5 sidebar sidebar-right sidebar-animate shadow-z-2 jumbotron"
+         style="z-index: 2000;">
+        <div style="position: fixed;left: 0px;top: 0px;z-index: -100;display: block;background-image: url({{pictBackground}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;width: 100%;height: 100%; -webkit-filter: blur(6px);"></div>
+        <div class="list-group panel panel-default profilebar" style="overflow-y:hidden;height: 400px;background: url('{{foto}}') no-repeat;background-size: 100%;">
+            <a class="navbar-brand namaprofile" href="/profile">{{username}}</a>
+        </div>
+
+        <div class="list-group panel panel-default flexSidebar" style="opacity: 0.8;">
+            <ul class="nav navbar-stacked">
+                <li><a class="glyphicon glyphicon-user" style="font-size: inherit;color: {{sGeneralFont}};" href="/profile">
+                    Profile</a></li>
+                <li><a class="glyphicon glyphicon-qrcode" style="font-size: inherit;color: {{sGeneralFont}};"
+                       href="/activitylogs"> Activity Logs</a></li>
+            </ul>
+        </div>
+
+        <div class="list-group panel panel-default flexSidebar" style="opacity: 0.8;">
+            <ul class="nav navbar-stacked">
+                <li><a class="linkLogout glyphicon glyphicon-log-out" style="font-size: inherit;color: darkred" href="">
+                    Logout</a></li>
+            </ul>
+        </div>
+        <BR><BR><BR><BR><BR>
+    </div>
+</template>

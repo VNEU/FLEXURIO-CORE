@@ -1,0 +1,79 @@
+
+
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='woTipe'>
+   <div class='container-fluid app'>
+      {{>utama}}
+      {{>menuSearch}}
+      {{>menuAdd}}
+      {{>menuBack}}
+      {{>menuReport}}
+      <div class='row main {{isLockMenu}} animasiAtas'>
+
+         <!-- HEADER LISTVIEW -->
+         <div class='list-group panel panel-default headerApp'>
+            {{>headerListview}}
+
+            {{#each woTipes}}
+            <div class='list-group-item'>
+               <div class='row-content'>
+                  <BR>
+                     <p>
+                        {{namaWOTIPE}}
+                     </p>
+
+                     <div class='least-content' style='top:20px;'>
+                        <a class="subTipeData" style="color:blue;" data-toggle="tooltip" title="DATA PROVINSI"><span class="glyphicon glyphicon-th-large"></span></a> &nbsp;&nbsp;&nbsp;
+                        {{>actionListview}}
+                     </div>
+                  </div>
+               </div>
+
+
+               {{#if isEditing}}
+               {{>blockModals}}
+               <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                  <div class='col-md-12'>
+                     <div class='form-group label-floating has-info col-md-12'>
+                        <label for='namaEditWOTIPE' class='control-label'>WO TIPE</label>
+                        <input name='namaEditWOTIPE' id='namaEditWOTIPE' type='text' class='form-control' style='font-size:larger;' value='{{namaWOTIPE}}'>
+                     </div>
+                  </div>
+
+                  <div class='pull-right'>
+                     <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                  </div>
+               </div>
+               {{/if}}
+
+
+               {{/each}}
+            </div>
+         </div>
+
+         {{#if isCreating}}
+         {{>blockModals}}
+         <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+            <div class='col-md-12'>
+               <div class='form-group label-floating has-info col-md-12'>
+                  <label for='namaWOTIPE' class='control-label'>WO TIPE</label>
+                  <input name='namaWOTIPE' id='namaWOTIPE' type='text' class='form-control' style='font-size:larger;' autofocus>
+               </div>
+            </div>
+
+            <div class='pull-right'>
+               <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+            </div>
+         </div>
+         {{/if}}
+
+         {{#if isDeleting}}
+         {{>formDeleting}}
+         {{/if}}
+
+      </div>
+
+
+   </template>

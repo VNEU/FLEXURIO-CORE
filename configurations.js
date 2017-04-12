@@ -1,0 +1,50 @@
+/**
+* Created by ThinkMac on 10/13/15.
+*/
+
+EncrypConfig = {
+	enforceEmailVerification: false
+};
+
+// GENERAL CONFIG
+sAPPName = "Flexurio App";
+
+// KEY OAUTH
+google = {
+	clientId: "792566970662-77l1se8suusk89b4mf8iadp730alq2jo.apps.googleusercontent.com",
+	clientSecret: "prSMw73wH30qBzLcchEcD8_I"
+};
+facebook = {
+	appId: "792566970662-77l1se8suusk89b4mf8iadp730alq2jo.apps.googleusercontent.com",
+	secret: "prSMw73wH30qBzLcchEcD8_I"
+};
+
+// REST FULL API
+apiPath = 'menaraAPI';
+
+
+// THEME COLOR
+sHeaderBackground = "#0E487A";
+sHeaderBackgroundSecondary = "#0E5AA4";
+sProfileBackground = "#0C3351";
+sGeneralFontBackground = "white";
+sGeneralFont = "#0E487A";
+
+// CONF ON SERVER
+sLokasi_upUser = "/home/DATA/NGINX/PICTURE/";
+sURL_upUser = "http://103.253.107.113:14001/PICTURE/";
+sURL = "http://103.253.107.113:10003/";
+
+// CONF ON LOCAL DEVELOPMENT
+sURL_upUser = "http://localhost:3000/";
+sURL = "http://localhost:3000/";
+sLokasi_upUser = process.env.PWD+"/public/";
+
+sAvatar = sURL + "images/avatar.svg";
+sLogo = sURL + "images/logo.svg";
+sBackground = sURL + "images/background.svg";
+
+
+Meteor.absoluteUrl.defaultOptions.rootUrl = sURL;
+
+// ./flexurio.sh server-runProductions 103.253.107.113:21001 CUPRUM

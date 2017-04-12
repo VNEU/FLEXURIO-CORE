@@ -1,0 +1,76 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='message'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+            <!-- HEADER LISTVIEW -->
+            <div class='headerApp'>
+                {{#each messages}}
+                    <div class='list-group-item jumbotron'>
+                        <label style="position: absolute;right: 10px;top:6px;z-index: 200;font-size: x-small;">{{createAt}} </label>
+
+                        <div class='row-content'>
+                            <p style="font-size: larger; font-weight: bolder;text-transform: capitalize">
+                                {{subject}}
+                            </p>
+                            <p style="font-size: xx-small;">
+                                From : {{createBy}} -
+                                To :
+                                {{#each messagesMember}}
+                                    {{dataNAME}};
+                                {{/each}}
+                            </p>
+
+                            <p>
+                                {{text}}
+                            </p>
+
+                            <div class='least-content' style='top:20px;'>
+                                {{>actionListview}}
+                            </div>
+                        </div>
+                        {{>flxcomments}}
+                    </div>
+                {{/each}}
+            </div>
+            {{>menuLoadMore}}
+        </div>
+
+        {{#if isCreating}}
+            {{>blockModals}}
+            <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
+                    <div class='form-group has-info col-md-12 col-sm-12'>
+                        {{>flxautocomplate id="to" label='TO' OData=ODataTo IDField="_id" NAMEField="profile.name"}}
+                    </div>
+
+                    <div class='form-group has-info col-md-12 col-sm-12'>
+                        <label for='subjectMESSAGE' class='control-label'>SUBJECT</label>
+                        <input name='subjectMESSAGE' id='subjectMESSAGE' type='text' class='form-control' style='font-size:larger;' value='{{subjectMESSAGE}}'>
+                    </div>
+
+                    <div class='form-group has-info col-md-12 col-sm-12'>
+                        <label for='textMESSAGE' class='control-label'>MESSAGE</label>
+                        <textarea name='textMESSAGE' id='textMESSAGE' type='text' class='form-control' rows="2"  style='font-size:larger;'></textarea>
+                    </div>
+                </div>
+
+                <div class='pull-right'>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDeleting}}
+            {{>formDeleting}}
+        {{/if}}
+    </div>
+</template>
+
+

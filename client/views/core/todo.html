@@ -1,0 +1,134 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='todo'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{#if isAdmin}}
+            {{>menuAdd}}
+        {{/if}}
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+            <!-- HEADER LISTVIEW -->
+            <div class='list-group panel panel-default shadow-z-4 headerApp'>
+                {{>headerListview}}
+
+                {{#each todos}}
+                    <div class='list-group-item'>
+                        <div class='row-content'>
+                            <h3 style="font-weight: bold;">{{subject}}</h3>
+                            <p>To : {{todoto}}</p>
+                            <p> {{content}}</p>
+                            <div class='least-content' style='top:20px;' align="right">
+                                {{#if isAdmin}}
+                                    {{>actionListview}}
+                                {{/if}}
+                                <BR>
+                                {{#if isGoTo}}
+                                    <a class='goTo btn btn-info' style="background-color: deepskyblue;color: white;">GO TO DATA !</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{>flxcomments}}
+
+                    {{#if isEditing}}
+                        {{>blockModals}}
+                        <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                            <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
+
+
+                                <div class='form-group label-floating has-info col-md-12'>
+                                    <label for='subjectEditTODO' class='control-label'>SUBJECT TODO</label>
+                                    <input name='subjectEditTODO' id='subjectEditTODO' type='text' class='form-control' style='font-size:larger;' value='{{subject}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-12'>
+                                    <label for='contentEditTODO' class='control-label'>CONTENT TODO</label>
+                                    <input name='contentEditTODO' id='contentEditTODO' type='text' class='form-control' style='font-size:larger;' value='{{content}}'>
+                                </div>
+
+
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='actionsEditTODO' class='control-label'>ACTIONS</label>
+                                    <input name='actionsEditTODO' id='actionsEditTODO' type='text' class='form-control' style='font-size:larger;' value='{{actions}}'>
+                                </div>
+                                <div class='form-group label-floating has-info col-md-6'>
+                                    <label for='actionsIDEditTODO' class='control-label'>ACTIONS ID</label>
+                                    <input name='actionsIDEditTODO' id='actionsIDEditTODO' type='text' class='form-control' style='font-size:larger;' value='{{actionsID}}'>
+                                </div>
+
+
+                            </div>
+
+                            <div class='pull-right'>
+                                <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                            </div>
+                        </div>
+                    {{/if}}
+
+
+                {{/each}}
+            </div>
+            {{>menuLoadMore}}
+        </div>
+
+        {{#if isCreating}}
+            {{>blockModals}}
+            <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
+
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='todoTo' class='control-label'>TO</label>
+                        <select class='form-control' name='todoTo' id='todoTo' type='text' style='font-size:larger;'>
+                            <option></option>
+                            {{#each members}}
+                                <option value="{{_id}}">{{profile.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='subjectTODO' class='control-label'>Subject</label>
+                        <input name='subjectTODO' id='subjectTODO' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='contentTODO' class='control-label'>Content</label>
+                        <input name='contentTODO' id='contentTODO' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='actionsTODO' class='control-label'>Actions</label>
+                        <input name='actionsTODO' id='actionsTODO' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+                    <div class='form-group label-floating has-info col-md-6'>
+                        <label for='actionsIDTODO' class='control-label'>Actions ID</label>
+                        <input name='actionsIDTODO' id='actionsIDTODO' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+
+                </div>
+
+                <div class='pull-right'>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDeleting}}
+            {{>formDeleting}}
+        {{/if}}
+
+    </div>
+
+
+</template>
+
+

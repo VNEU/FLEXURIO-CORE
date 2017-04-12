@@ -1,0 +1,151 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='wo'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+        <div class='row main col-md-9 col-md-offset-3'>
+
+            <!-- HEADER LISTVIEW -->
+            <div class='list-group panel panel-default shadow-z-4 headerApp'>
+                {{>headerListview}}
+
+                {{#each wos}}
+                    <div class='list-group-item'>
+                        <div class='row-content'>
+                            <h3 style="font-weight: bold;">
+                                {{namaWO}}
+                            </h3>
+                            <p>
+                                {{tipeWO}} - {{subTipeWO}} - {{detailTipeWO}}
+                            </p>
+                            <p>
+                                {{keteranganWO}}
+                            </p>
+                            <p style="font-size: x-small;" align="right">
+                                <h4 style="color: red;">{{status}}</h4>
+                                Create At : {{createAt}}<BR>
+                                Sign At : {{signAt}} to {{signTo}}<BR>
+                                Close At : {{closeAt}} to {{closeBy}}
+                            </p>
+
+                            <div class='least-content' style='top:20px;'>
+                                <a class="report" style="color:blue;" data-toggle="tooltip" title="PRINT DATA"><span class="glyphicon glyphicon-print"></span></a> &nbsp;&nbsp;&nbsp;
+                                <a class="signTo" style="color:green;" data-toggle="tooltip" title="SIGN PIC USER"><span class="glyphicon glyphicon-user"></span></a> &nbsp;&nbsp;&nbsp;
+                                {{#if isPlay}}
+                                    {{#if isStop}}
+                                        <a class="stop" style="color:red;" data-toggle="tooltip" title="STOP WO"><span class="glyphicon glyphicon-stop"></span></a> &nbsp;&nbsp;&nbsp;
+                                    {{/if}}
+                                    {{#if isStart}}
+                                        <a class="play" style="color:red;" data-toggle="tooltip" title="START WO"><span class="glyphicon glyphicon-play"></span></a> &nbsp;&nbsp;&nbsp;
+                                    {{/if}}
+                                {{/if}}
+                                {{>actionListview}}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{>flxcomments}}
+
+                    {{#if isEditing}}
+                        {{>blockModals}}
+                        <div class='jumbotron container' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                            <div class='col-md-12'>
+                                <div class='form-group label-floating has-info col-md-12'>
+                                    <label for='keteranganEditWO' class='control-label'>NAMA WO</label>
+                                    <input name='keteranganEditWO' id='keteranganEditWO' type='text' class='form-control' style='font-size:larger;' value='{{keteranganWO}}'>
+                                </div>
+                            </div>
+
+                            <div class='pull-right'>
+                                <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                            </div>
+                        </div>
+                    {{/if}}
+
+
+                {{/each}}
+            </div>
+            {{>menuLoadMore}}
+        </div>
+
+        {{#if isCreating}}
+            {{>blockModals}}
+            <div class='jumbotron container' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12'>
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='namaWO' class='control-label'>NAMA WO</label>
+                        <input name='namaWO' id='namaWO' type='text' class='form-control' style='font-size:larger;'>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-4'>
+                        <label for='tipeWO' class='control-label'>TIPE</label>
+                        <select class='form-control' name='tipeWO' id='tipeWO' style='font-size:larger;'>
+                            <option></option>
+                            {{#each woTipeDATA}}
+                                <option value="{{_id}}">{{namaWOTIPE}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-4'>
+                        <label for='subTipeWO' class='control-label'>SUB TIPE</label>
+                        <select class='form-control' name='subTipeWO' id='subTipeWO' style='font-size:larger;'>
+                            <option></option>
+                            {{#each subTipeWODATA}}
+                                <option value="{{_id}}">{{namaWOSUBTIPE}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-4'>
+                        <label for='detailTipeWO' class='control-label'>SUB TIPE</label>
+                        <select class='form-control' name='detailTipeWO' id='detailTipeWO' style='font-size:larger;'>
+                            <option></option>
+                            {{#each subTipeWODetailDATA}}
+                                <option value="{{_id}}">{{namaWOSUBTIPEDETAIL}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <label for='keteranganWO' class='control-label'>KETERANGAN</label>
+                        <textarea name='keteranganWO' id='keteranganWO' type='text' class='form-control' style='font-size:larger;' rows='3'></textarea>
+                    </div>
+                </div>
+
+                <div class='pull-right'>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+
+        {{#if isSignTo}}
+            {{>blockModals}}
+            <div class='jumbotron container' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+                <div class='col-md-12'>
+                    <div class='label-floating has-info col-md-12'>
+                        <label for='signTo' class='control-label'>TO</label>
+                        <select class='form-control' name='signTo' id='signTo' type='text' style='font-size:larger;'>
+                            <option></option>
+                            {{#each members}}
+                                <option value="{{_id}}">{{profile.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <BR>
+
+                <div class='pull-right'>
+                    <a class='saveSignTo btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDeleting}}
+            {{>formDeleting}}
+        {{/if}}
+
+    </div>
+
+
+</template>

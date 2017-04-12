@@ -1,0 +1,84 @@
+<!-- Generated from flexurio tools -->
+<!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
+
+<template name='kabupaten'>
+    <div class='container-fluid app'>
+        {{>utama}}
+        {{>menuSearch}}
+        {{>menuAdd}}
+        {{>menuBack}}
+        <div class='row main {{isLockMenu}} animasiAtas'>
+
+          <!-- HEADER LISTVIEW -->
+          <div class='list-group panel panel-default headerApp'>
+            {{>headerListview}}
+
+            {{#each kabupatens}}
+                <div class='list-group-item'>
+                    <div class='row-content'>
+                        <BR>
+                        <p>
+                          {{kodeKABUPATEN}} - {{namaKABUPATEN}}
+                        </p>
+
+                        <div class='least-content' style='top:20px;'>
+                          <a class="kecamatanData" style="color:blue;" data-toggle="tooltip" title="DATA PROVINSI"><span class="glyphicon glyphicon-th-large"></span></a> &nbsp;&nbsp;&nbsp;
+                          {{>actionListview}}
+                        </div>
+                    </div>
+                </div>
+
+
+                {{#if isEditing}}
+            	    {{>blockModals}}
+            	    <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                    <div class='col-md-12'>
+                      <div class='form-group label-floating has-info col-md-4'>
+                          <label for='kodeEditKABUPATEN' class='control-label'>KODE KABUPATEN</label>
+                          <input name='kodeEditKABUPATEN' id='kodeEditKABUPATEN' type='text' class='form-control' style='font-size:larger;' value='{{kodeKABUPATEN}}'>
+                      </div>
+                      <div class='form-group label-floating has-info col-md-8'>
+                          <label for='namaEditKABUPATEN' class='control-label'>NAMA KABUPATEN</label>
+                          <input name='namaEditKABUPATEN' id='namaEditKABUPATEN' type='text' class='form-control' style='font-size:larger;' value='{{namaKABUPATEN}}'>
+                      </div>
+                    </div>
+
+                    <div class='pull-right'>
+                      <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                    </div>
+            	    </div>
+                {{/if}}
+
+
+            {{/each}}
+          </div>
+        </div>
+
+    {{#if isCreating}}
+	    {{>blockModals}}
+	    <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
+        <div class='col-md-12'>
+          <div class='form-group label-floating has-info col-md-4'>
+              <label for='kodeKABUPATEN' class='control-label'>KODE KABUPATEN</label>
+              <input name='kodeKABUPATEN' id='kodeKABUPATEN' type='text' class='form-control' style='font-size:larger;'>
+          </div>
+          <div class='form-group label-floating has-info col-md-8'>
+              <label for='namaKABUPATEN' class='control-label'>NAMA KABUPATEN</label>
+              <input name='namaKABUPATEN' id='namaKABUPATEN' type='text' class='form-control' style='font-size:larger;'>
+          </div>
+        </div>
+
+        <div class='pull-right'>
+          <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+        </div>
+	    </div>
+    {{/if}}
+
+    {{#if isDeleting}}
+      {{>formDeleting}}
+    {{/if}}
+
+    </div>
+
+
+</template>
