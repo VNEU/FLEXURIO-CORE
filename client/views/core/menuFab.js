@@ -23,7 +23,7 @@ Template.footNoteReport.helpers({
 		return date;
 	},
 	username: function () {
-		return username();
+		return UserName();
 	}
 
 });

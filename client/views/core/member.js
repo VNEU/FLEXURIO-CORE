@@ -192,7 +192,7 @@ insertMEMBER = function (tpl) {
         }
     });
 
-    insertLogs("CREATE ACCOUNT " + textFirstName + ' ' + textLastName, " " + username() + " create new user account.");
+    insertLogs("CREATE ACCOUNT " + textFirstName + ' ' + textLastName, " " + UserName() + " create new user account.");
 
 };
 
@@ -226,6 +226,6 @@ updateMEMBER = function (tpl) {
     });
 
     Session.set('idEditing', "");
-    insertLogs("UPDATE DATA MEMBER ", " " + username() + " change data email or password user " + Session.get("namaMember").toUpperCase(),);
+    insertLogs("UPDATE DATA MEMBER ", " " + UserName() + " change data email or password user " + Session.get("namaMember").toUpperCase(),);
 
 };

@@ -6,7 +6,7 @@
 
 Template.profile.created = function () {
     subscribtion('memberku', {}, {}, 0);
-    SetFOTO(500,500,'updateFotoMember', pictProfile(userid()), userid());
+    SetFOTO(500,500,'updateFotoMember', pictProfile(UserID()), UserID());
 };
 
 
@@ -18,16 +18,16 @@ Template.profile.helpers({
 		return Session.get('editedUploadId') === this._id;
 	},
 	pictProfile: function () {
-		return pictProfile(userid());
+		return pictProfile(UserID());
 	},
 	pictBackground: function () {
-		return pictProfileBackground(userid());
+		return pictProfileBackground(UserID());
 	},
 	members: function () {
 		return MEMBER.find(Meteor.userId());
 	},
 	username: function () {
-		return username();
+		return UserName();
 	},
 	email: function () {
 		return email();
@@ -52,14 +52,14 @@ Template.profile.helpers({
 Template.profile.events({
 	"click a.profilePict": function (e, tpl) {
 		e.preventDefault();
-		SetFOTO(500,500,'updateFotoMember', pictProfile(userid()), userid());
+		SetFOTO(500,500,'updateFotoMember', pictProfile(UserID()), UserID());
 		$('#editYourAvatarModal').modal();
 	},
 
 
 	"click a.upload": function (e, tpl) {
 		e.preventDefault();
-		SetFOTO(700, 700, 'updateFotoBackground', pictProfileBackground(userid()), userid());
+		SetFOTO(700, 700, 'updateFotoBackground', pictProfileBackground(UserID()), UserID());
 		$('#editYourAvatarModal').modal();
 	},
 

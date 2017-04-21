@@ -151,8 +151,8 @@ insertKELURAHAN = function (tpl) {
 			idKECAMATAN: Session.get("idKECAMATAN"),
 			namaKECAMATAN: Session.get("namaKECAMATAN"),
 			aktifYN: 1,
-         createByID: userid(),
-         createBy:username(),
+         createByID: UserID(),
+         createBy:UserName(),
          createAt: new Date()
 
 		},
@@ -185,8 +185,8 @@ updateKELURAHAN = function (tpl) {
 			$set: {
 				namaKELURAHAN: namaEditKELURAHAN,
 				kodeKELURAHAN: kodeEditKELURAHAN,
-				updateByID: userid(),
-				updateBy:username(),
+				updateByID: UserID(),
+				updateBy:UserName(),
 				updateAt: new Date()
 			}
 		},
@@ -211,8 +211,8 @@ deleteKELURAHAN = function () {
 		{
 			$set: {
 				aktifYN: 0,
-				deleteByID: userid(),
-				deleteBy: username(),
+				deleteByID: UserID(),
+				deleteBy: UserName(),
 				deleteAt: new Date()
 			}
 		},

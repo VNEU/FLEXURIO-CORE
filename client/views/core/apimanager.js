@@ -143,8 +143,8 @@ insertAPIMANAGER = function (tpl) {
         {
             namaAPIMANAGER: namaAPIMANAGER,
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
         },
         function (err, id) {
@@ -172,8 +172,8 @@ updateAPIMANAGER = function (tpl) {
         {
             $set: {
                 namaAPIMANAGER: namaEditAPIMANAGER,
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -199,8 +199,8 @@ deleteAPIMANAGER = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

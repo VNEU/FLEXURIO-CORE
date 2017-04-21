@@ -11,10 +11,10 @@ import "./profilebar.html";
 
 Template.profilebar.helpers({
 	username: function () {
-		return username()
+		return UserName()
 	},
 	foto: function () {
-		return pictProfile(userid());
+		return pictProfile(UserID());
 	},
 	quotes: function () {
 		let dKaryawan = MEMBER.findOne({_id: Meteor.userId()});
@@ -28,7 +28,7 @@ Template.profilebar.helpers({
 		return sGeneralFont;
 	},
 	pictBackground: function () {
-		return pictProfileBackground(userid());
+		return pictProfileBackground(UserID());
 	},
 
 });

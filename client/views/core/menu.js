@@ -138,8 +138,8 @@ insertMENU = function (tpl) {
 			groupMENU: groupMENU,
 			iconMENU: iconMENU,
 			aktifYN: 1,
-         createByID: userid(),
-         createBy:username(),
+         createByID: UserID(),
+         createBy:UserName(),
          createAt: new Date()
 		},
 		function (err, id) {
@@ -175,8 +175,8 @@ updateMENU = function (tpl) {
 			namaMENU: namaEditMENU,
 			groupMENU: groupEditMENU,
 			iconMENU: iconEditMENU,
-			updateByID: userid(),
-			updateBy:username(),
+			updateByID: UserID(),
+			updateBy:UserName(),
 			updateAt: new Date()
 
 		}
@@ -203,8 +203,8 @@ deleteMENU = function () {
 	{
 		$set: {
 			aktifYN: 0,
-			deleteByID: userid(),
-			deleteBy: username(),
+			deleteByID: UserID(),
+			deleteBy: UserName(),
 			deleteAt: new Date()
 		}
 	},

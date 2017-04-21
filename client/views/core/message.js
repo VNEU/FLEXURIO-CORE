@@ -164,8 +164,8 @@ insertMESSAGE = function (tpl) {
             subject: subjectMESSAGE,
             text: textMESSAGE,
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
         },
         function (err, id) {
@@ -221,8 +221,8 @@ updateMESSAGE = function (tpl) {
 
                 text: hideData(textEditMESSAGE),
 
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -248,8 +248,8 @@ deleteMESSAGE = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

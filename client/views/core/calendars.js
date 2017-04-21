@@ -232,8 +232,8 @@ insertCALENDARS = function (tpl) {
             repeatdays: repeatdaysCALENDARS,
 
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
         },
         function (err, id) {
@@ -297,8 +297,8 @@ updateCALENDARS = function (tpl) {
 
                 repeatdays: repeatdaysEditCALENDARS,
 
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -324,8 +324,8 @@ deleteCALENDARS = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

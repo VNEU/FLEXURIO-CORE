@@ -94,7 +94,7 @@ Template.login.events({
 				} else {
 					pasangkunc();
 					Router.go('/')
-					FlashMessages.sendSuccess('Hello ' + username() + ', Wellcome to ' + sAPPName);
+					FlashMessages.sendSuccess('Hello ' + UserName() + ', Wellcome to ' + sAPPName);
 				}
 			});
 		},
@@ -107,7 +107,7 @@ Template.login.events({
 				if (err) {
 					FlashMessages.sendWarning('Sorry, your username or password not valid !');
 				} else {
-					FlashMessages.sendSuccess('Hello ' + username() + ', Wellcome to ' + sAPPName);
+					FlashMessages.sendSuccess('Hello ' + UserName() + ', Wellcome to ' + sAPPName);
 					pasangkunc();
 					Router.go('/');
 				}

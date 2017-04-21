@@ -205,8 +205,8 @@ deleteWOSUBTIPE = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

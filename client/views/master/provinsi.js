@@ -159,8 +159,8 @@ insertPROVINSI = function (tpl) {
             idNEGARA: Session.get("idNEGARA"),
             namaNEGARA: Session.get("namaNEGARA"),
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
 
         },
@@ -193,8 +193,8 @@ updatePROVINSI = function (tpl) {
             $set: {
                 namaPROVINSI: namaEditPROVINSI,
                 kodePROVINSI: kodeEditPROVINSI,
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -220,8 +220,8 @@ deletePROVINSI = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

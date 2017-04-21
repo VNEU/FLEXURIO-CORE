@@ -25,7 +25,7 @@ Template.todo.onRendered(function () {
 
 Template.todo.helpers({
     isAdmin: function () {
-        return isRoleAdmin(userid());
+        return isRoleAdmin(UserID());
     },
     isGoTo: function () {
         return !this.readYN;
@@ -189,8 +189,8 @@ updateTODO = function (tpl) {
                 actions: actionsEditTODO,
                 actionsID: actionsIDEditTODO,
 
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -216,8 +216,8 @@ deleteTODO = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

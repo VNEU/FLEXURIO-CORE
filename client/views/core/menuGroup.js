@@ -147,8 +147,8 @@ insertMENUGROUP = function (tpl) {
             iconMENUGROUP: iconMENUGROUP,
             locationsMENUGROUP: locationsMENUGROUP,
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
         },
         function (err, id) {
@@ -182,8 +182,8 @@ updateMENUGROUP = function (tpl) {
                 namaMENUGROUP: namaEditMENUGROUP.toUpperCase(),
                 iconMENUGROUP: iconEditMENUGROUP,
                 locationsMENUGROUP: locationsMENUGROUP,
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -209,8 +209,8 @@ deleteMENUGROUP = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

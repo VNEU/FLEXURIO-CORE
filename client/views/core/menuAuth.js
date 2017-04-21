@@ -272,7 +272,7 @@ insertMENUAUTH = function (tpl, authTIPE) {
             }
         );
 
-        insertLogs("AUTH MEMBER", username() + " update AUTH " + authTIPE + " to " + Session.get("namaMember").toUpperCase() + " MENU : " + namaMENU + "");
+        insertLogs("AUTH MEMBER", UserName() + " update AUTH " + authTIPE + " to " + Session.get("namaMember").toUpperCase() + " MENU : " + namaMENU + "");
 
     }
 };

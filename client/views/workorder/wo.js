@@ -48,7 +48,7 @@ Template.wo.helpers({
     },
     isPlay: function () {
         if (this.status !== "FINISH") {
-            return this.signToID === userid() | isRoleAdmin(userid());
+            return this.signToID === UserID() | isRoleAdmin(UserID());
         } else {
             return false;
         }
@@ -106,8 +106,8 @@ Template.wo.helpers({
             aktifYN: 1
         };
 
-        if (!isRoleAdmin(userid())) {
-            oFILTERS.createByID = userid();
+        if (!isRoleAdmin(UserID())) {
+            oFILTERS.createByID = UserID();
         }
 
         let oOPTIONS = {
@@ -250,8 +250,8 @@ Template.wo.events({
             {
                 $set: {
                     status: "START",
-                    statusBy: username(),
-                    statusByID: userid()
+                    statusBy: UserName(),
+                    statusByID: UserID()
                 }
             },
             function (err, id) {
@@ -271,8 +271,8 @@ Template.wo.events({
             {
                 $set: {
                     status: "FINISH",
-                    statusBy: username(),
-                    statusByID: userid()
+                    statusBy: UserName(),
+                    statusByID: UserID()
                 }
             },
             function (err, id) {
@@ -323,8 +323,8 @@ insertWO = function (tpl) {
             closeBy: "-",
             closeAt: "-",
 
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
         },
         function (err, id) {
@@ -354,8 +354,8 @@ updatePIC = function (tpl) {
     WO.update({_id: Session.get('idSignTo')},
         {
             $set: {
-                signByID: userid(),
-                signBy: username(),
+                signByID: UserID(),
+                signBy: UserName(),
                 signAt: new Date(),
                 signTo: nama,
                 status: "SIGN PIC",
@@ -427,8 +427,8 @@ deleteWO = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

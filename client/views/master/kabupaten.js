@@ -164,8 +164,8 @@ insertKABUPATEN = function (tpl) {
             idPROVINSI: Session.get("idPROVINSI"),
             namaPROVINSI: Session.get("namaPROVINSI"),
             aktifYN: 1,
-            createByID: userid(),
-            createBy: username(),
+            createByID: UserID(),
+            createBy: UserName(),
             createAt: new Date()
 
         },
@@ -198,8 +198,8 @@ updateKABUPATEN = function (tpl) {
             $set: {
                 namaKABUPATEN: namaEditKABUPATEN,
                 kodeKABUPATEN: kodeEditKABUPATEN,
-                updateByID: userid(),
-                updateBy: username(),
+                updateByID: UserID(),
+                updateBy: UserName(),
                 updateAt: new Date()
             }
         },
@@ -225,8 +225,8 @@ deleteKABUPATEN = function () {
         {
             $set: {
                 aktifYN: 0,
-                deleteByID: userid(),
-                deleteBy: username(),
+                deleteByID: UserID(),
+                deleteBy: UserName(),
                 deleteAt: new Date()
             }
         },

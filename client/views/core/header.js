@@ -34,7 +34,7 @@ Template.header.helpers({
         return moment().format("YYYY-MM-DD hh:mm:ss");
     },
     lokasiFotoKaryawan: function () {
-        return pictProfile(userid());
+        return pictProfile(UserID());
     },
     namaApp: function () {
         return sAPPName;

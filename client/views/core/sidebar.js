@@ -10,14 +10,14 @@ import './sidebar.html';
 Template.sidebar.created = function () {
     Blaze._allowJavascriptUrls();
 
-    let menuAuth = MENUAUTH.find({userId: userid()});
+    let menuAuth = MENUAUTH.find({userId: UserID()});
     let idMenu = menuAuth.map(function (p) {
         return p.idMENU
     });
 
     let oFILTERMENU = {_id: {$in: idMenu}, groupMENU: this.namaMENUGROUP, aktifYN: 1};
 
-    menuAuth = MENUAUTH.find({userId: userid()});
+    menuAuth = MENUAUTH.find({userId: UserID()});
     let groupMENU = menuAuth.map(function (p) {
         return p.groupMENU
     });
@@ -39,7 +39,7 @@ Template.sidebar.onRendered(function () {
 
 Template.sidebar.events({
     'click input.lockMenu': function (e, tpl) {
-        MEMBER.update(userid(), {$set: {'profile.lockMenu': e.target.checked}});
+        MEMBER.update(UserID(), {$set: {'profile.lockMenu': e.target.checked}});
         Session.set("lockMenu", e.target.checked);
     }
 });
