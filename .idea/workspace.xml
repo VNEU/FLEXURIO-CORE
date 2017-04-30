@@ -1,35 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf04c1ae-5cba-4acc-a854-475bfe48c0e5" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/NUTRIMAX_SERVER_NEW.iml" afterPath="$PROJECT_DIR$/.idea/FLEXURIO-CORE.iml" />
+    <list default="true" id="cf04c1ae-5cba-4acc-a854-475bfe48c0e5" name="Default" comment="update scroll top">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/apimanager.js" afterPath="$PROJECT_DIR$/client/views/core/apimanager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/calendars.js" afterPath="$PROJECT_DIR$/client/views/core/calendars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/header.js" afterPath="$PROJECT_DIR$/client/views/core/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/login.js" afterPath="$PROJECT_DIR$/client/views/core/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/member.js" afterPath="$PROJECT_DIR$/client/views/core/member.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/menu.js" afterPath="$PROJECT_DIR$/client/views/core/menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/menuAuth.js" afterPath="$PROJECT_DIR$/client/views/core/menuAuth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/menuFab.js" afterPath="$PROJECT_DIR$/client/views/core/menuFab.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/menuGroup.js" afterPath="$PROJECT_DIR$/client/views/core/menuGroup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/message.js" afterPath="$PROJECT_DIR$/client/views/core/message.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/profile.js" afterPath="$PROJECT_DIR$/client/views/core/profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/profilebar.js" afterPath="$PROJECT_DIR$/client/views/core/profilebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/sidebar.js" afterPath="$PROJECT_DIR$/client/views/core/sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/todo.js" afterPath="$PROJECT_DIR$/client/views/core/todo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/master/kabupaten.js" afterPath="$PROJECT_DIR$/client/views/master/kabupaten.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/master/kecamatan.js" afterPath="$PROJECT_DIR$/client/views/master/kecamatan.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/master/kelurahan.js" afterPath="$PROJECT_DIR$/client/views/master/kelurahan.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/master/negara.js" afterPath="$PROJECT_DIR$/client/views/master/negara.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/master/provinsi.js" afterPath="$PROJECT_DIR$/client/views/master/provinsi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/workorder/wo.js" afterPath="$PROJECT_DIR$/client/views/workorder/wo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/workorder/woSubTipe.js" afterPath="$PROJECT_DIR$/client/views/workorder/woSubTipe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/workorder/woSubTipeDetail.js" afterPath="$PROJECT_DIR$/client/views/workorder/woSubTipeDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/workorder/woTipe.js" afterPath="$PROJECT_DIR$/client/views/workorder/woTipe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/home.html" afterPath="$PROJECT_DIR$/client/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/home.js" afterPath="$PROJECT_DIR$/client/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configurations.js" afterPath="$PROJECT_DIR$/configurations.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/moduleumum.js" afterPath="$PROJECT_DIR$/lib/moduleumum.js" />
     </list>
     <ignored path="NUTRIMAX_SERVER_NEW.iws" />
@@ -53,45 +31,60 @@
       <file leaf-file-name="configurations.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configurations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="660">
+              <caret line="44" column="67" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/core/header.html">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="46" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+            <state relative-caret-position="225">
+              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flx.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/styles/css/flx.css">
+      <file leaf-file-name="publications.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/publications.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="254" column="19" lean-forward="true" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+            <state relative-caret-position="195">
+              <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="favicon.ico" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/favicon.ico">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/core/todo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="moduleumum.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/moduleumum.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="82" column="6" lean-forward="false" selection-start-line="82" selection-start-column="6" selection-end-line="82" selection-end-column="6" />
+            <state relative-caret-position="1350">
+              <caret line="92" column="2" lean-forward="false" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -100,7 +93,7 @@
       <file leaf-file-name="apimanager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/core/apimanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
+            <state relative-caret-position="2310">
               <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
               <folding />
             </state>
@@ -153,6 +146,7 @@
     <findStrings>
       <find>username()</find>
       <find>userid()</find>
+      <find>Scrol</find>
     </findStrings>
     <replaceStrings>
       <replace>UserName()</replace>
@@ -188,19 +182,19 @@
         <option value="$PROJECT_DIR$/client/views/generally/profile.html" />
         <option value="$PROJECT_DIR$/client/styles/css/loading.css" />
         <option value="$PROJECT_DIR$/client/views/generally/header.html" />
-        <option value="$PROJECT_DIR$/client/home.js" />
         <option value="$PROJECT_DIR$/flexurio.sh" />
         <option value="$PROJECT_DIR$/client/views/generally/profilebar.js" />
-        <option value="$PROJECT_DIR$/configurations.js" />
         <option value="$PROJECT_DIR$/client/views/generally/search.js" />
         <option value="$PROJECT_DIR$/client/views/generally/search.html" />
         <option value="$PROJECT_DIR$/client/views/generally/menuFab.js" />
-        <option value="$PROJECT_DIR$/client/home.html" />
         <option value="$PROJECT_DIR$/client/views/generally/menuFab.html" />
         <option value="$PROJECT_DIR$/client/views/core/header.html" />
-        <option value="$PROJECT_DIR$/lib/moduleumum.js" />
         <option value="$PROJECT_DIR$/client/views/core/apimanager.js" />
         <option value="$PROJECT_DIR$/client/styles/css/flx.css" />
+        <option value="$PROJECT_DIR$/configurations.js" />
+        <option value="$PROJECT_DIR$/client/home.html" />
+        <option value="$PROJECT_DIR$/client/home.js" />
+        <option value="$PROJECT_DIR$/lib/moduleumum.js" />
       </list>
     </option>
   </component>
@@ -216,8 +210,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="13" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -238,6 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,118 +246,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FLEXURIO-CORE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,6 +382,14 @@
       <option name="presentableId" value="Default" />
       <updated>1491398763709</updated>
     </task>
+    <task id="LOCAL-00001" summary="update profile user name &amp; user id">
+      <created>1492744739421</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1492744739421</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -507,17 +402,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="13" width="1280" height="774" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18189038" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18189038" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287879" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2547945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -525,6 +419,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46212122" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -545,22 +440,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update design brooo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update design brooo" />
+    <MESSAGE value="update profile user name &amp; user id" />
+    <MESSAGE value="update scroll top" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scroll top" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.meteor/packages">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/markers-shadow.png" />
-    <entry file="file://$PROJECT_DIR$/public/images/avatar.png" />
     <entry file="file://$PROJECT_DIR$/public/images/texture-metal.png" />
     <entry file="file://$PROJECT_DIR$/client/styles/css/sidebar.css" />
     <entry file="file://$USER_HOME$/.meteor/packages/twbs_bootstrap/3.3.6/web.browser/dist/css/bootstrap.css">
@@ -622,35 +510,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/css/flexurio.css" />
     <entry file="file://$PROJECT_DIR$/client/views/generally/header.js" />
-    <entry file="file://$PROJECT_DIR$/client/home.js" />
     <entry file="file://$PROJECT_DIR$/flexurio.sh" />
     <entry file="file://$PROJECT_DIR$/client/views/generally/profilebar.html" />
     <entry file="file://$PROJECT_DIR$/client/views/generally/profilebar.js" />
     <entry file="file://$PROJECT_DIR$/client/views/generally/header.html" />
-    <entry file="file://$PROJECT_DIR$/lib/moduleumum.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/generally/menuFab.js" />
-    <entry file="file://$PROJECT_DIR$/client/home.html" />
     <entry file="file://$PROJECT_DIR$/client/views/generally/menuFab.html" />
     <entry file="file://$PROJECT_DIR$/client/views/core/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="46" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/css/flx.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="240" column="0" lean-forward="false" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -659,17 +535,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/moduleumum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="82" column="6" lean-forward="false" selection-start-line="82" selection-start-column="6" selection-end-line="82" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/core/apimanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="2310">
           <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
           <folding />
         </state>
@@ -693,10 +561,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/css/flx.css">
+    <entry file="file://$PROJECT_DIR$/lib/moduleumum.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="254" column="19" lean-forward="true" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="67" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.meteor/packages/jayuda_flx-chart/0.0.4/web.browser/packages/jayuda_flx-chart/client/template.chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/core/todo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/moduleumum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="92" column="2" lean-forward="false" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/publications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
           <folding />
         </state>
       </provider>

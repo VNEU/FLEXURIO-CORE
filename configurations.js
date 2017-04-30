@@ -7,7 +7,8 @@ EncrypConfig = {
 };
 
 // GENERAL CONFIG
-sAPPName = "Flexurio App";
+sAPPName = "Flexurio";
+apiPath = 'flexurioAPI';
 
 // KEY OAUTH
 google = {
@@ -20,7 +21,6 @@ facebook = {
 };
 
 // REST FULL API
-apiPath = 'menaraAPI';
 
 
 // THEME COLOR
@@ -31,11 +31,6 @@ sGeneralFontBackground = "white";
 sGeneralFont = "#0E487A";
 
 // CONF ON SERVER
-sLokasi_upUser = "/home/DATA/NGINX/PICTURE/";
-sURL_upUser = "http://103.253.107.113:14001/PICTURE/";
-sURL = "http://103.253.107.113:10003/";
-
-// CONF ON LOCAL DEVELOPMENT
 sURL_upUser = "http://localhost:3000/";
 sURL = "http://localhost:3000/";
 sLokasi_upUser = process.env.PWD+"/public/";
