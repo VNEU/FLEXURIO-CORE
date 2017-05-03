@@ -3,6 +3,7 @@
         <div class="modal-dialog w-modal0">
             <div class="modal-content modal-radius">
                 <div class="modal-header">
+                    <BR>
                     <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
                 </div>
 
@@ -10,19 +11,9 @@
                     {{> editYourAvatarModalBody}}
                 </div>
 
-                <div class="modal-footer">
-                    <div class="row" style="position:relative;width:98%;left:2%;">
-                        <div class="col-md-3 col-sm-3">
-                            <input type="button" id="changeAvatarButton" class="btn btn-modal btn-primary pull-right col-lg-12" value="GET IMAGE"/>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 error"></div>
-                        <div class="col-md-3 col-sm-3">
-                            <input type="button" id="saveAvatarButton" class="btn btn-modal btn-primary pull-right col-lg-12" value="SAVE"/>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
+                <a type="button" id="changeAvatarButton" class="btn pull-right" style="position: absolute;left: 10px;bottom: 0px;color: gray;" >GET IMAGE</a>
+                <div class="col-md-12 col-sm-12 error" style="position: absolute;left: 0px;top: 50px;"></div>
+                <input type="button" id="saveAvatarButton" class="btn pull-right" value="SAVE" style="position: absolute;right:10px;bottom: 0px;border-bottom: none !important;;"/>
             </div>
         </div>
     </div>
@@ -30,14 +21,14 @@
 
 <template name="editYourAvatarModalBody">
     <div class="row">
-        <div class="col-md-8" style="overflow: hidden;">
+        <div class="col-md-12" style="overflow: hidden;">
             <img id="realImage" src="{{ image }}" class="hide" alt="" />
             <img id="avatarUserImg" src="{{ image }}" class="" alt="" />
 
             <input type="file" name="avatarFile" class="hide" />
         </div>
 
-        <div class="col-md-4" style="overflow: hidden;">
+        <div class="col-md-12 hide" style="overflow: hidden;">
             <div id="previewFrame" class="hide" style="width: {{sLebar}}px; height: {{sTinggi}}px;">
                 <div id="preview" style="width: {{sLebar}}px; height: {{sTinggi}}px;">
                     <img src="{{ image }}"/>
