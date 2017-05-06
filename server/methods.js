@@ -43,33 +43,6 @@ Meteor.methods({
 			}
 		}
 	},
-	updateUserRSA: function (_id, private, public) {
-		let dataMember = MEMBER.findOne({_id:_id});
-		if(adaDATA(dataMember.privateRSA)) {
-			return;
-		}
-
-		if (private !== "") {
-			MEMBER.update(
-				{_id:_id},
-				{
-					$set:{
-							privateRSA:private
-					}
-				}
-			);
-		}
-		if (public !== "") {
-			MEMBER.update(
-				{_id:_id},
-				{
-					$set:{
-							publicRSA:public
-					}
-				}
-			);
-		}
-	},
 	updateFotoMember: function (oDataFoto, idSelector) {
 		if (!this.userId) {
 			throw new Meteor.Error(403, "You must be logged in");
@@ -127,11 +100,11 @@ Meteor.methods({
 		);
 	},
 
-	downloadReport: function (collection) {
-		let heading = true;
-		let delimiter = ";";
-		return exportcsv.exportToCSV(collection, heading, delimiter);
-	},
+    updatePassUser: function (_id, passwordNew) {
+        if (passwordNew !== "") {
+            Accounts.setPassword(_id, passwordNew);
+        }
+    },
 
 
 });
@@ -139,4 +112,4 @@ Meteor.methods({
 setToken = function (idUser) {
 	sTokenKey = DATATOKEN.findOne().sTokenKey;
 	return sTokenKey;
-}
+};

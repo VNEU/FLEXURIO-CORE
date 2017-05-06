@@ -86,6 +86,7 @@ Template.menu.events({
 
 	'click a.create': function (e, tpl) {
 		e.preventDefault();
+        Scroll2Top();
 		Session.set('isCreating', true);
 	},
 	'keyup #namaMENU': function (e, tpl) {

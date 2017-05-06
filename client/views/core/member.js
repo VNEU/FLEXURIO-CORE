@@ -86,20 +86,6 @@ Template.member.helpers({
 });
 
 Template.member.events({
-    'click a.authRSA': function (e, tpl) {
-        e.preventDefault();
-        crypt = new JSEncrypt({default_key_size: 2048});
-        crypt.getKey();
-        Meteor.call('updateUserRSA', this._id, crypt.getPrivateKey(), crypt.getPublicKey(), function (err) {
-            if (err) {
-                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.' + err);
-            } else {
-                FlashMessages.sendSuccess('Thanks, your data is successfully saved');
-            }
-        });
-
-    },
-
     'click a.ubahProfile': function (e, tpl) {
         e.preventDefault();
         SetFOTO(400, 500, 'updateFotoBackground', pictProfileBackground(this._id), this._id);

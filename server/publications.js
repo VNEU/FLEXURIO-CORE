@@ -9,7 +9,11 @@ Meteor.publish('member', function (iLimit, oFilter, oOptions) {
         if (iLimit == 0) {
             delete oOPTIONS.limit;
         }
-        return Meteor.users.find(oFilter, oOPTIONS);
+        if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
+            return Meteor.users.find({aktifYN: 1});
+        } else {
+            return Meteor.users.find(oFilter, oOPTIONS);
+        }
     } else {
         this.ready();
     }
@@ -24,7 +28,11 @@ Meteor.publish('menuGroup', function () {
         });
         let oFILTERS = {aktifYN: 1, namaMENUGROUP: {$in: groupMENU}};
 
-        return MENUGROUP.find(oFILTERS);
+        if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
+            return  MENUGROUP.find({aktifYN: 1});
+        } else {
+            return MENUGROUP.find(oFILTERS);
+        }
     } else {
         this.ready();
     }
@@ -44,7 +52,12 @@ Meteor.publish('messageMember', function (iLimit) {
             limit: iLimit
         };
 
-        return MESSAGEMEMBER.find({idMessage: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+        if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
+            return MESSAGEMEMBER.find({aktifYN: 1}, oOPTIONS);
+        } else {
+            return MESSAGEMEMBER.find({idMessage: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+        }
+
     } else {
         this.ready();
     }
@@ -64,7 +77,11 @@ Meteor.publish('message', function (iLimit) {
             limit: iLimit
         };
 
-        return MESSAGE.find({_id: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+        if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
+            return MESSAGE.find({aktifYN: 1}, oOPTIONS);
+        } else {
+            return MESSAGE.find({_id: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+        }
     } else {
         this.ready();
     }
@@ -77,7 +94,11 @@ Meteor.publish('menu', function () {
         let idMenu = menuAuth.map(function (p) {
             return p.idMENU
         });
-        return MENU.find({_id: {$in: idMenu}, aktifYN: 1});
+        if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
+            return MENU.find({aktifYN: 1});
+        } else {
+            return MENU.find({_id: {$in: idMenu}, aktifYN: 1});
+        }
     } else {
         this.ready();
     }

@@ -1,13 +1,6 @@
 <template name="sidebar">
     <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 sidebar sidebar-left sidebar-animate shadow-z-2 shadow-z-4 -webkit-scrollbar jumbotron {{showIcon}} {{animasiSide}}"
          style="background: url(/images/body.jpg);z-index: 2000;">
-
-        <div class="list-group panel panel-default flexSidebar">
-            <ul class="nav navbar-stacked">
-                <li><a class="glyphicon glyphicon-home" href="/" style="color: {{sGeneralFont}};"> Home</a></li>
-                <li><a class="glyphicon glyphicon-envelope" href="message" style="color: {{sGeneralFont}};"> Messages</a></li>
-            </ul>
-        </div>
         {{#each sideMenuGroup}}
             <div class="list-group panel panel-default flexSidebar">
                 <div class="panel-heading shadow-z-1">

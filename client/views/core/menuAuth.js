@@ -192,6 +192,7 @@ Template.menuAuth.events({
     'click a.create': function (e, tpl) {
         e.preventDefault();
         updateIdMenu();
+        Scroll2Top();
         Session.set('isCreating', true);
         Session.set('idUser', this._id);
     },

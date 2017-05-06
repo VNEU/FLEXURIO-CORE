@@ -11,6 +11,7 @@ Template.utama.created = function () {
         Router.go('/');
     }
     if(!adaDATA(MENUAUTH.findOne({routerMENU:Session.get('sURLMenu'), userId:UserID()}))){
+        console.log("cek your auth " + Session.get('sURLMenu'));
         Router.go('/');
     }
 };

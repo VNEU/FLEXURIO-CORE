@@ -1,7 +1,25 @@
 DATATOKEN = new Mongo.Collection('dataToken');
 Meteor.startup(function () {
+    console.log("Flexurio - start on server . . . ");
+
     if (MENU.find().count() === 0) {
         [
+            {
+                "_id": "YjcMkpQt8NxF9pddYcE",
+                "namaMENU": "Dashboard",
+                "routerMENU": "/",
+                "groupMENU": "HOME",
+                "iconMENU": "glyphicon glyphicon-th-large",
+                "aktifYN": 1
+            },
+            {
+                "_id": "YjcMkpQt8NxF9pYcE",
+                "namaMENU": "Messages",
+                "routerMENU": "message",
+                "groupMENU": "HOME",
+                "iconMENU": "glyphicon glyphicon-envelope",
+                "aktifYN": 1
+            },
             {
                 "namaMENU": "Menu",
                 "routerMENU": "menuGroup",
@@ -21,7 +39,7 @@ Meteor.startup(function () {
                 "namaMENU": "Tipe WO",
                 "routerMENU": "woTipe",
                 "groupMENU": "WORK ORDER",
-                "iconMENU": "glyphicon glyphicon-stats",
+                "iconMENU": "glyphicon glyphicon-list",
                 aktifYN : 1
             },
             {
@@ -29,7 +47,7 @@ Meteor.startup(function () {
                 "namaMENU": "WO",
                 "routerMENU": "wo",
                 "groupMENU": "WORK ORDER",
-                "iconMENU": "glyphicon glyphicon-stats",
+                "iconMENU": "glyphicon glyphicon-list",
                 aktifYN : 1
             }
         ].forEach(function (dataMenu) {
@@ -39,6 +57,13 @@ Meteor.startup(function () {
 
     if (MENUGROUP.find().count() === 0) {
         [
+            {
+                "_id": "D8zEEzJxrZi8YFnhj",
+                "namaMENUGROUP": "HOME",
+                "iconMENUGROUP": "glyphicon glyphicon-home",
+                "locationsMENUGROUP": "1. Top Locations",
+                "aktifYN": 1
+            },
             {
                 "namaMENUGROUP": "SETTINGS",
                 "iconMENUGROUP": "glyphicon glyphicon-wrench",
@@ -82,12 +107,11 @@ Meteor.startup(function () {
     Roles.addUsersToRoles(idAdmin, ['root', 'administrator'], Roles.GLOBAL_GROUP);
 
     Roles.getUsersInRole(['root', 'administrator']).map(function (user, index, originalCursor) {
-        console.log("Check Auth Admin . . . ");
+        console.log("Flexurio - Check Auth Admin . . . ");
 
         MENUAUTH.find({userId: user._id}).forEach(function (obj) {
             MENUAUTH.remove({_id: obj._id});
         });
-        console.log("Insert Auth Admin . . . ");
         MENU.find({aktifYN: 1}).forEach(function (obj) {
             MENUAUTH.insert(
                 {

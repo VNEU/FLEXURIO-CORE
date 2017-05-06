@@ -1,5 +1,3 @@
-
-
 <!-- Generated from flexurio tools -->
 <!-- Flexurio By Pamungkas Jayuda yulius.jayuda@gmail.com / +628119003077 -->
 
@@ -7,48 +5,49 @@
     <div class='container-fluid app'>
         <div class='row main col-md-12'>
 
-          <!-- HEADER LISTVIEW -->
-          <div class='list-group panel panel-default headerApp'>
-            {{>headerListview}}
+            <!-- HEADER LISTVIEW -->
+            <div class='list-group panel panel-default headerApp'>
+                {{>headerListview}}
 
-            {{#each profileDatas}}
                 <div class='list-group-item'>
                     <div class='row-content'>
                         <BR>
                         <p>
-                          {{kodePROFILEDATA}} - {{namaPROFILEDATA}}
+                            Name : {{name}}
+                        </p>
+                        <p>
+                            Email : {{emails}}
                         </p>
 
                         <div class='least-content' style='top:20px;'>
-                          {{>actionListview}}
+                            <a class="editData" style="color:orange;" data-toggle="tooltip" title="EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
 
 
-                {{#if isEditing}}
-            	    {{>blockModals}}
-            	    <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
-                    <div class='col-md-12'>
-                      <div class='form-group label-floating has-info col-md-4'>
-                          <label for='kodeEditPROFILEDATA' class='control-label'>KODE PROFILEDATA</label>
-                          <input name='kodeEditPROFILEDATA' id='kodeEditPROFILEDATA' type='text' class='form-control' style='font-size:larger;' value='{{kodePROFILEDATA}}'>
-                      </div>
-                      <div class='form-group label-floating has-info col-md-8'>
-                          <label for='namaEditPROFILEDATA' class='control-label'>NAMA PROFILEDATA</label>
-                          <input name='namaEditPROFILEDATA' id='namaEditPROFILEDATA' type='text' class='form-control' style='font-size:larger;' value='{{namaPROFILEDATA}}'>
-                      </div>
-                    </div>
+                {{#if isEditingPASS}}
+                    {{>blockModals}}
+                    <div class='jumbotron container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
+                        <div class='col-md-12'>
+                            <div class='form-group label-floating has-info col-md-6'>
+                                <label for='password' class='control-label'>Password</label>
+                                <input name='password' id='password' type='password' class='form-control' style='font-size:larger;'>
+                            </div>
+                            <div class='form-group label-floating has-info col-md-6'>
+                                <label for='retype' class='control-label'>Retype Password</label>
+                                <input name='retype' id='retype' type='password' class='form-control' style='font-size:larger;'>
+                            </div>
+                        </div>
 
-                    <div class='pull-right'>
-                      <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                        <div class='pull-right'>
+                            <a class='saveEDIT btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                        </div>
                     </div>
-            	    </div>
                 {{/if}}
 
 
-            {{/each}}
-          </div>
+            </div>
         </div>
     </div>
 

@@ -28,7 +28,7 @@ Template.message.created = function () {
     Session.set('flxauto_message_data', MENU.findOne());
 
     this.autorun(function () {
-        subscribtion('member', Session.get('oFILTERS_toMessage'), Session.get('oOPTIONS_toMessage'), 0);
+        subscribtion('member', {}, Session.get('oOPTIONS_toMessage'), 0);
         Meteor.subscribe('message', Session.get('limit'));
         Meteor.subscribe('messageMember', Session.get('limit'));
     });
@@ -111,8 +111,21 @@ Template.message.helpers({
 
 Template.message.events({
     'keyup input#toMessage': function (e, tpl) {
-        if (e.keyCode == 13) {
-            let dataPilih = tpl.$('input[name="toMessage"]').val();
+        flxautocomplete.autocomplete({
+            name: 'toMessage',
+            element: 'input#toMessage',
+            collection: MEMBER,
+            field: ['profile.name', 'username'],
+            fields: {profile: 1, username: 1},
+            limit: 0,
+            sort: {'profile.name': 1},
+            filter: {}
+        });
+    },
+
+    'change input#toMessage': function (e, tpl) {
+        let dataPilih = tpl.$('input[name="toMessage"]').val();
+        if (dataPilih.length > 10) {
             let allmember = toMessage.get();
             dataMember = MEMBER.findOne({username: dataPilih});
             if (adaDATA(dataMember)) {
@@ -122,17 +135,6 @@ Template.message.events({
             } else {
                 FlashMessages.sendError('Emails not valid !');
             }
-        } else {
-            flxautocomplete.autocomplete({
-                name: 'toMessage',
-                element: 'input#toMessage',
-                collection: MEMBER,
-                field: ['profile.name', 'username'],
-                fields: {profile: 1, username: 1},
-                limit: 0,
-                sort: {'profile.name': 1},
-                filter: {}
-            });
         }
     },
 
