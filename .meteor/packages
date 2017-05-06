@@ -50,7 +50,6 @@ jayuda:flx-comments
 jayuda:flx-typeahead
 matb33:collection-hooks
 jayuda:flx-jsencrypt
-jayuda:flx-autocomplate
 fezvrasta:bootstrap-material-design
 fullcalendar:fullcalendar
 facebook-config-ui@1.0.0
@@ -58,3 +57,6 @@ google-config-ui@1.0.0
 twitter-config-ui@1.0.0
 nimble:restivus
 flowkey:hotkeys
+jayuda:flx-autocomplete
+showdown
+msavin:mongol

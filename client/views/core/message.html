@@ -14,28 +14,29 @@
                 {{#each messages}}
                     <div class='list-group-item jumbotron'>
                         <label style="position: absolute;right: 10px;top:6px;z-index: 200;font-size: x-small;">{{createAt}} </label>
+                        <div class='least-content' style='position:absolute;top:35px;right: 10px;'>
+                            <a class="deleteData" style="color:red;" data-toggle="tooltip" title="DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
 
                         <div class='row-content'>
-                            <p style="font-size: larger; font-weight: bolder;text-transform: capitalize">
-                                {{subject}}
-                            </p>
-                            <p style="font-size: xx-small;">
-                                From : {{createBy}} -
+                            <p style="font-size: medium;">From : {{createBy}}</p>
+                            <p style="font-size: medium;">
                                 To :
                                 {{#each messagesMember}}
-                                    {{dataNAME}};
+                                    {{username}};
                                 {{/each}}
                             </p>
-
-                            <p>
-                                {{text}}
+                            <p style="font-size: medium; font-weight: bolder;text-transform: capitalize">
+                                Subject : {{subject}}
                             </p>
+                            <HR>
+                            <p>
+                                {{{isiMessage}}}
+                            </p>
+                            <HR>
 
-                            <div class='least-content' style='top:20px;'>
-                                {{>actionListview}}
-                            </div>
                         </div>
-                        {{>flxcomments}}
+                        {{>flxcomments isCommentOpen=true _id=_id comments=comments}}
                     </div>
                 {{/each}}
             </div>
@@ -47,7 +48,17 @@
             <div class='container animasiAtas' style='position:absolute;top:10%;left:10%;width:80%;z-index:10001;'>
                 <div class='col-md-12' style='height:auto;max-height:{{sTinggiPopUp}}px;overflow-y:scroll;'>
                     <div class='form-group has-info col-md-12 col-sm-12'>
-                        {{>flxautocomplate id="to" label='TO' OData=ODataTo IDField="_id" NAMEField="profile.name"}}
+                        <label for='toMessage' class='control-label'>TO</label>
+                        {{#each penerima}}
+                            <label class="btn btn-sm" style="background-color:lightgray;color:dodgerblue;font-size: small;">{{username}} &nbsp;&nbsp;<a class="hapusTerima" id="{{username}}" style="position: relative;right: -3px;"><i class="material-icons" style="color: white;">&#xE5CD;</i></a></label>
+                        {{/each}}
+
+                        <input class='form-control' id="toMessage" name="toMessage" type="search" list="XXXX">
+                        <datalist id="XXXX">
+                            {{#each datasearchBox}}
+                                <option value="{{username}}">{{profile.name}}</option>
+                            {{/each}}
+                        </datalist>
                     </div>
 
                     <div class='form-group has-info col-md-12 col-sm-12'>
@@ -57,12 +68,13 @@
 
                     <div class='form-group has-info col-md-12 col-sm-12'>
                         <label for='textMESSAGE' class='control-label'>MESSAGE</label>
-                        <textarea name='textMESSAGE' id='textMESSAGE' type='text' class='form-control' rows="2"  style='font-size:larger;'></textarea>
+                        <textarea name='textMESSAGE' id='textMESSAGE' type='text' class='form-control' rows="4" style='font-size:larger;'></textarea>
+                        <label style="font-size: xx-small;color: lightgray;">*. need to be artist, you can use Markdown</label>
                     </div>
                 </div>
 
                 <div class='pull-right'>
-                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
+                    <a class='save btn btn-primary' style='background-color:green;color:white;'>SEND MESSAGE</a>
                 </div>
             </div>
         {{/if}}

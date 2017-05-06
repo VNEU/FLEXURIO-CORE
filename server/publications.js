@@ -2,6 +2,44 @@
 * Flexruio Created by YN. Pamungkas Jayuda.
 */
 
+Meteor.publish('messageMember', function (iLimit) {
+    if (this.userId) {
+        let thisusername = MEMBER.findOne({_id:this.userId}).username;
+        let dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN:1});
+        let idMessage = dataMESSAGE.map(function (p) {
+            return p.idMessage
+        });
+        let oOPTIONS = {
+            sort: {createAt: -1},
+            limit: iLimit
+        };
+
+        return MESSAGEMEMBER.find({idMessage: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+    } else {
+        this.ready();
+    }
+});
+
+
+Meteor.publish('message', function (iLimit) {
+    if (this.userId) {
+        let thisusername = MEMBER.findOne({_id:this.userId}).username;
+
+        let dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN: 1});
+        let idMessage = dataMESSAGE.map(function (p) {
+            return p.idMessage
+        });
+        let oOPTIONS = {
+            sort: {createAt: -1},
+            limit: iLimit
+        };
+
+        return MESSAGE.find({_id: {$in: idMessage}, aktifYN: 1}, oOPTIONS);
+    } else {
+        this.ready();
+    }
+});
+
 publishData = function (sNama, sObject, oWhere, oConditions) {
     Meteor.publish(sNama, function (iLimit, oFilter, oOptions) {
         // gabungkan OR
@@ -54,15 +92,13 @@ publishData = function (sNama, sObject, oWhere, oConditions) {
 
 
 /**    publishData(NAME_Publications, OBJECT_Collections, OBJECT_OFilter, OBJECT_oOPTIONS)      **/
-publishData("memberku", Meteor.users, {_id: this.userId}, {});
-publishData("menuAuthku", MENUAUTH, {userId:this.userId}, {});
+publishData("memberku", Meteor.users, {}, {});
+publishData("menuAuthku", MENUAUTH, {}, {});
 publishData("member", Meteor.users, {}, {profile:1});
 publishData('menu', MENU, {}, {});
 publishData('menuGroup', MENUGROUP, {}, {});
 publishData('menuAuth', MENUAUTH, {}, {});
 publishData('todo', TODO, {}, {});
-publishData('message', MESSAGE, {}, {});
-publishData('messageMember', MESSAGEMEMBER, {}, {});
 publishData('activitylogs', ACTIVITYLOGS, {}, {});
 publishData('profileData', PROFILEDATA, {}, {});
 publishData('negara', NEGARA, {}, {});

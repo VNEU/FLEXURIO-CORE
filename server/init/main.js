@@ -23,6 +23,14 @@ Meteor.startup(function () {
                 "groupMENU": "WORK ORDER",
                 "iconMENU": "glyphicon glyphicon-stats",
                 aktifYN : 1
+            },
+            {
+                "_id": "kaQdHiHmbbJkrdW749",
+                "namaMENU": "WO",
+                "routerMENU": "wo",
+                "groupMENU": "WORK ORDER",
+                "iconMENU": "glyphicon glyphicon-stats",
+                aktifYN : 1
             }
         ].forEach(function (dataMenu) {
             MENU.insert(dataMenu);
@@ -50,8 +58,9 @@ Meteor.startup(function () {
 
     if (MEMBER.find().count() === 0) {
         var seedUserId = Accounts.createUser({
-            password: "wicdt21",
-            email: 'admin@flexurio.co.id',
+            password: "flx.indo",
+            email: 'admin@flexurio.com',
+            username: 'admin@flexurio.com',
             profile: {
                 name: 'administrator'
             }
@@ -69,7 +78,7 @@ Meteor.startup(function () {
         });
     }
 
-    let idAdmin = MEMBER.findOne({'emails.address': 'admin@flexurio.co.id'})._id;
+    let idAdmin = MEMBER.findOne({'emails.address': 'admin@flexurio.com'})._id;
     Roles.addUsersToRoles(idAdmin, ['root', 'administrator'], Roles.GLOBAL_GROUP);
 
     Roles.getUsersInRole(['root', 'administrator']).map(function (user, index, originalCursor) {

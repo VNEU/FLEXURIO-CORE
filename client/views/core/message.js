@@ -5,28 +5,32 @@
 
 import {Template} from "meteor/templating";
 import {Session} from "meteor/session";
+import {ReactiveVar} from 'meteor/reactive-var';
 import "./message.html";
 
+var toMessage = new ReactiveVar([]);
+
+
 Template.message.created = function () {
-    Session.set('limit', 50); Session.set('oFILTERS', {}); Session.set('oOPTIONS', {});
+    Session.set('limit', 50);
+    Session.set('oFILTERS', {});
+    Session.set('oOPTIONS', {});
     Session.set('textSearch', '');
     Session.set('namaHeader', 'DATA MESSAGE');
     Session.set('dataDelete', '');
-    Session.set('isCreating', false); Session.set('isEditing', false);
+    Session.set('isCreating', false);
+    Session.set('isEditing', false);
     Session.set('isDeleting', false);
     Session.set('oFILTERSMembers', {});
     Session.set('oFILTERS', {});
     Session.set('oOPTIONS', {});
-
-
-    $('.form-control').on('focus blur', function (e) {
-        $(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
-    }).trigger('blur');
-
+    Session.set('flxauto_message_status', true);
+    Session.set('flxauto_message_data', MENU.findOne());
 
     this.autorun(function () {
-        subscribtion('message', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
-        subscribtion('messageMember', Session.get('oFILTERSMembers'), {}, 0);
+        subscribtion('member', Session.get('oFILTERS_toMessage'), Session.get('oOPTIONS_toMessage'), 0);
+        Meteor.subscribe('message', Session.get('limit'));
+        Meteor.subscribe('messageMember', Session.get('limit'));
     });
 };
 
@@ -36,6 +40,21 @@ Template.message.onRendered(function () {
 
 
 Template.message.helpers({
+    isiMessage: function () {
+        let converter = new Showdown.converter();
+        let isi = converter.makeHtml(this.text);
+        return isi;
+    },
+
+    penerima: function () {
+        return toMessage.get();
+    },
+    datasearchBox: function () {
+        return Session.get('toMessage');
+    },
+    objectCARI: function () {
+        return TIMELINES.findOne();
+    },
     isLockMenu: function () {
         return isLockMenu();
     },
@@ -52,9 +71,7 @@ Template.message.helpers({
         return Session.get('isCreating');
     },
     messagesMember: function () {
-        let oFILTERSMembers = {idMESSAGE: this._id};
-        Session.set('oFILTERSMembers', oFILTERSMembers);
-        return MESSAGEMEMBER.find(oFILTERSMembers);
+        return MESSAGEMEMBER.find({idMessage: this._id});
     },
     messages: function () {
         let textSearch = '';
@@ -88,9 +105,41 @@ Template.message.helpers({
 });
 
 Template.message.events({
+    'keyup input#toMessage': function (e, tpl) {
+        if (e.keyCode == 13) {
+            let dataPilih = tpl.$('input[name="toMessage"]').val();
+            let allmember = toMessage.get();
+            dataMember = MEMBER.findOne({username: dataPilih});
+            if (adaDATA(dataMember)) {
+                allmember.push({username: dataMember.username});
+                toMessage.set(allmember);
+                document.getElementById("toMessage").value = "";
+            } else {
+                FlashMessages.sendError('Emails not valid !');
+            }
+        } else {
+            flxautocomplete.autocomplete({
+                name: 'toMessage',
+                element: 'input#toMessage',
+                collection: MEMBER,
+                field: ['profile.name', 'username'],
+                fields: {profile: 1, username: 1},
+                limit: 0,
+                sort: {'profile.name': 1},
+                filter: {}
+            });
+        }
+    },
+
+    'click a.hapusTerima': function (e, tpl) {
+        let penerimaAll = toMessage.get();
+        penerimaAll = ArrayRemove(penerimaAll, 'username', e.currentTarget.id);
+        toMessage.set(penerimaAll);
+    },
     'click a.cancel': function (e, tpl) {
         e.preventDefault();
-        Session.set('isCreating', false); Session.set('isEditing', false);
+        Session.set('isCreating', false);
+        Session.set('isEditing', false);
         Session.set('idEditing', '');
         Session.set('isDeleting', false);
     },
@@ -104,12 +153,16 @@ Template.message.events({
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
         Session.set('isDeleting', true);
-        Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaMESSAGE);
+        Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' "' + this.subject + '" From "' + this.createBy + '" ');
         Session.set('idDeleting', this._id);
     },
 
     'click a.create': function (e, tpl) {
         e.preventDefault();
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+
         Session.set('isCreating', true);
     },
     'keyup #namaMESSAGE': function (e, tpl) {
@@ -125,6 +178,7 @@ Template.message.events({
 
     'click a.editData': function (e, tpl) {
         e.preventDefault();
+
         Session.set('idEditing', this._id);
     },
     'keyup #namaEditMESSAGE': function (e, tpl) {
@@ -139,13 +193,8 @@ Template.message.events({
     },
     'submit form.form-comments': function (e, tpl) {
         e.preventDefault();
-        let textComments = tpl.$('input[name="comments' + this._id + '"]').val();
-        if (textComments.length) {
-            addComments(this._id, textComments, MESSAGE);
-        }
-        e.target.reset();
+        flxcomments(e, tpl, MESSAGE);
     }
-
 
 });
 
@@ -153,7 +202,12 @@ Template.message.events({
 insertMESSAGE = function (tpl) {
     let subjectMESSAGE = tpl.$('input[name="subjectMESSAGE"]').val();
     let textMESSAGE = tpl.$('textarea[name="textMESSAGE"]').val();
+    let dataTo = toMessage.get();
 
+    if (dataTo < 1) {
+        FlashMessages.sendWarning('Hello ' + UserName() + ', please input person at "TO", use ENTER to add them. ');
+        return;
+    }
     if (!adaDATA(subjectMESSAGE) | !adaDATA(textMESSAGE)) {
         FlashMessages.sendWarning('Please add subject or Messages text');
         return;
@@ -170,18 +224,34 @@ insertMESSAGE = function (tpl) {
         },
         function (err, id) {
             if (err) {
-                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again, ' + err.toString());
             } else {
-                let nameSession = 'autocomplate_session_' + 'to';
-                let dataSelected = Session.get(nameSession);
 
-                dataSelected.forEach(
-                    function (obj) {
-                        obj["idMESSAGE"] = id;
-                        MESSAGEMEMBER.insert(obj);
-                    });
-                Session.set('isCreating', false);
+                let aPenerima = {};
+                aPenerima.idMessage = id;
+                aPenerima.aktifYN = 1;
+                aPenerima.createByID = UserID();
+                aPenerima.createBy = UserName();
+                aPenerima.createAt = new Date()
+                aPenerima.username = Meteor.user().username;
+                MESSAGEMEMBER.insert(aPenerima);
+
+                for (var i = 0; i < dataTo.length; i++) {
+                    aPenerima = dataTo[i];
+                    aPenerima.idMessage = id;
+                    aPenerima.aktifYN = 1;
+                    aPenerima.createByID = UserID();
+                    aPenerima.createBy = UserName();
+                    aPenerima.createAt = new Date()
+
+                    MESSAGEMEMBER.insert(aPenerima);
+
+                }
+                Meteor.subscribe('message', Session.get('limit'));
+                Meteor.subscribe('messageMember', Session.get('limit'));
+
                 FlashMessages.sendSuccess('Thanks, your data is successfully saved');
+                Session.set('isCreating', null);
             }
         }
     );
@@ -210,15 +280,10 @@ updateMESSAGE = function (tpl) {
     MESSAGE.update({_id: Session.get('idEditing')},
         {
             $set: {
-
                 from: hideData(fromEditMESSAGE),
-
                 to: hideData(toEditMESSAGE),
-
                 cc: hideData(ccEditMESSAGE),
-
                 subject: hideData(subjectEditMESSAGE),
-
                 text: hideData(textEditMESSAGE),
 
                 updateByID: UserID(),
@@ -244,24 +309,32 @@ deleteMESSAGE = function () {
         return;
     }
 
-    MESSAGE.update({_id: Session.get('idDeleting')},
-        {
-            $set: {
-                aktifYN: 0,
-                deleteByID: UserID(),
-                deleteBy: UserName(),
-                deleteAt: new Date()
+    let dataMESSAGE = MESSAGEMEMBER.find({username:Meteor.user().username, idMessage:Session.get('idDeleting')});
+    dataMESSAGE.map(function (p) {
+        MESSAGEMEMBER.update({_id: p._id},
+            {
+                $set: {
+                    aktifYN: 0,
+                    deleteByID: UserID(),
+                    deleteBy: UserName(),
+                    deleteAt: new Date()
+                }
+            },
+            function (err, id) {
+                if (err) {
+                    FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+                } else {
+                    Session.set('idEditing', '');
+                    Meteor.subscribe('message', Session.get('limit'));
+                    Meteor.subscribe('messageMember', Session.get('limit'));
+                }
             }
-        },
-        function (err, id) {
-            if (err) {
-                FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
-            } else {
-                Session.set('idEditing', '');
-                FlashMessages.sendSuccess('Thanks, your data is successfully saved');
-            }
-        }
-    );
+        );
+    });
+
+    Session.set('idEditing', '');
+
+
 };
 
 
