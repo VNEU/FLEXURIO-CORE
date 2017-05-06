@@ -238,11 +238,7 @@ Template.wo.events({
     },
     "submit form.form-comments": function (e, tpl) {
         e.preventDefault();
-        let textComments = tpl.$('input[name="comments' + this._id + '"]').val();
-        if (textComments.length) {
-            addComments(this._id, textComments, WO);
-        }
-        e.target.reset();
+        flxcomments(e,tpl,WO);
     },
     'click a.play': function (e, tpl) {
         e.preventDefault();

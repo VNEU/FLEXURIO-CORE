@@ -39,7 +39,4 @@ sAvatar = sURL + "images/avatar.svg";
 sLogo = sURL + "images/logo.svg";
 sBackground = sURL + "images/background.svg";
 
-
 Meteor.absoluteUrl.defaultOptions.rootUrl = sURL;
-
-// ./flexurio.sh server-runProductions 103.253.107.113:21001 CUPRUM

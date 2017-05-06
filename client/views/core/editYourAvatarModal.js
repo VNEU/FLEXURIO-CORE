@@ -20,7 +20,7 @@ Template.editYourAvatarModalBody.helpers({
 		if (Meteor.user())
 			return Session.get('UI_Foto');
 		else
-			return sAVATAR;
+			return sAvatar;
 	},
 	sLebar: function(){
 		return Session.get('UI_Width');

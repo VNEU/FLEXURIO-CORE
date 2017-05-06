@@ -5,27 +5,19 @@ Meteor.startup(function () {
     var Api = new Restivus({
         useDefaultAuth: true,
         prettyJson: true,
-        apiPath:"MenaraAPI",
-        auth: {
-            token: 'auth.apiKey',
-            user: function () {
-                return {
-                    userId: this.request.headers['user-id'],
-                    token: this.request.headers['login-token']
-                };
-            }
-        }
+        apiPath:"flxAPI"
     });
 
-    // Generates: GET, POST on /api/items and GET, PUT, DELETE on
-    // /api/items/:id for the Items collection
-    Api.addCollection(NEGARA, {
+    Api.addCollection(WO, {
+        routeOptions: {
+            authRequired: true
+        },
         endpoints: {
             get: {
                 authRequired: true
             },
             post: {
-                authRequired: false
+                authRequired: true
             },
             put: {
                 authRequired: true,
@@ -35,7 +27,18 @@ Meteor.startup(function () {
                 authRequired: true,
                 roleRequired: 'admin'
             }
+        }
+    });
 
+    // Maps to: /api/articles/:id
+    Api.addRoute('/wo/:id', {authRequired: true}, {
+        get: function () {
+            console.log(Api.users);
+            return WO.findOne(this.urlParams.id);
         }
     });
 });
+
+
+//curl http://localhost:3000/flxAPI/login/ -d "username=admin@flexurio.com&password=flx.indo"
+//curl -H "x-auth-token: ZQFv9449VLIF5I8BPc0v2kqg4dK1KouNNQXIa9eu6My" -H "x-user-id: 4BxgJARXEevAbuirr" http://localhost:3000/flx/wo/

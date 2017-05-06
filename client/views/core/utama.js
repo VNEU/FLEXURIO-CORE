@@ -8,8 +8,10 @@
 
 Template.utama.created = function () {
     if (!Meteor.userId()) {
-        Router.go('/oraono');
+        Router.go('/');
     }
-
+    if(!adaDATA(MENUAUTH.findOne({routerMENU:Session.get('sURLMenu'), userId:UserID()}))){
+        Router.go('/');
+    }
 };
 

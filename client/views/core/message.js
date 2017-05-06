@@ -79,12 +79,17 @@ Template.message.helpers({
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
+        let dataMESSAGE = MESSAGEMEMBER.find({username:EmailUser(), aktifYN: 1});
+        let idMessage = dataMESSAGE.map(function (p) {
+            return p.idMessage
+        });
+
         let oFILTERS = {
+            _id: {$in: idMessage},
             aktifYN: 1,
             $or: [
                 {subject: {$regex: textSearch, $options: 'i'}},
-                {text: {$regex: textSearch, $options: 'i'}},
-                {_id: {$regex: textSearch, $options: 'i'}},
+                {text: {$regex: textSearch, $options: 'i'}}
             ]
         };
 
@@ -159,10 +164,8 @@ Template.message.events({
 
     'click a.create': function (e, tpl) {
         e.preventDefault();
-        $("html, body").animate({
-            scrollTop: 0
-        }, 600);
-
+        toMessage.set([]);
+        Scroll2Top();
         Session.set('isCreating', true);
     },
     'keyup #namaMESSAGE': function (e, tpl) {

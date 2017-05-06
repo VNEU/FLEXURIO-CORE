@@ -154,7 +154,11 @@ insertWOSUBTIPE = function (tpl) {
             kodeWOTIPE: Session.get('kodeWOTIPE'),
             namaWOTIPE: Session.get('namaWOTIPE'),
             namaWOSUBTIPE: namaWOSUBTIPE,
-            aktifYN: 1
+            aktifYN: 1,
+            createByID: UserID(),
+            createBy: UserName(),
+            createAt: new Date()
+
         },
         function (err, id) {
             if (err) {
@@ -180,7 +184,11 @@ updateWOSUBTIPE = function (tpl) {
     WOSUBTIPE.update({_id: Session.get('idEditing')},
         {
             $set: {
-                namaWOSUBTIPE: namaEditWOSUBTIPE
+                namaWOSUBTIPE: namaEditWOSUBTIPE,
+                updateByID: UserID(),
+                updateBy: UserName(),
+                updateAt: new Date()
+
             }
         },
         function (err, id) {

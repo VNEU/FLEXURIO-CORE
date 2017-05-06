@@ -169,7 +169,10 @@ insertWOTIPE = function (tpl) {
     WOTIPE.insert(
         {
             namaWOTIPE: namaWOTIPE,
-            aktifYN: 1
+            aktifYN: 1,
+            createByID: UserID(),
+            createBy: UserName(),
+            createAt: new Date()
         },
         function (err, id) {
             if (err) {
@@ -194,7 +197,10 @@ updateWOTIPE = function (tpl) {
     WOTIPE.update({_id: Session.get('idEditing')},
         {
             $set: {
-                namaWOTIPE: namaEditWOTIPE
+                namaWOTIPE: namaEditWOTIPE,
+                updateByID: UserID(),
+                updateBy: UserName(),
+                updateAt: new Date()
             }
         },
         function (err, id) {

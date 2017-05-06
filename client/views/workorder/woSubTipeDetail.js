@@ -144,8 +144,12 @@ insertWOSUBTIPEDETAIL = function (tpl) {
 			kodeWOSUBTIPE: Session.get('kodeWOSUBTIPE'),
 			namaWOSUBTIPE: Session.get('namaWOSUBTIPE'),
 			namaWOSUBTIPEDETAIL: namaWOSUBTIPEDETAIL,
-			aktifYN: 1
-		},
+			aktifYN: 1,
+            createByID: UserID(),
+            createBy: UserName(),
+            createAt: new Date()
+
+        },
 		function (err, id) {
 			if (err) {
 				FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
@@ -170,7 +174,10 @@ updateWOSUBTIPEDETAIL = function (tpl) {
 	WOSUBTIPEDETAIL.update({_id: Session.get('idEditing')},
 		{
 			$set: {
-				namaWOSUBTIPEDETAIL: namaEditWOSUBTIPEDETAIL
+				namaWOSUBTIPEDETAIL: namaEditWOSUBTIPEDETAIL,
+                updateByID: UserID(),
+                updateBy: UserName(),
+                updateAt: new Date()
 			}
 		},
 		function (err, id) {

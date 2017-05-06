@@ -38,7 +38,7 @@ Template.profilebar.events({
 	'click a.linkLogout': function (e, tpl) {
 		Meteor.logout(function () {
 			Meteor.call('resetKunci');
-			Router.go("login");
+			Router.go("/");
 		});
 	},
 	"submit form.form-quotes": function (e, tpl) {
