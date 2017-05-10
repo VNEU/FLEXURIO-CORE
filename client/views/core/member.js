@@ -202,16 +202,24 @@ updateMEMBER = function (tpl) {
     }
 
 
-    Meteor.call('updateUserData', Session.get("idEditing"), emailNew, newPassword, function (err) {
-        if (err == "GAGAL") {
-            FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+    var dataMember = MEMBER.findOne({'emails.address': emailNew});
+    if (adaDATA(dataMember)) {
+        if(dataMember._id != Session.get("idEditing")){
+            FlashMessages.sendWarning('Sorry, Email already use by ' + dataMember.profile.name);
         } else {
-            Session.set('isCreating', false);
-            FlashMessages.sendSuccess('Thanks, your data is successfully saved');
-        }
-    });
+            Meteor.call('updateUserData', Session.get("idEditing"), emailNew, newPassword, function (err) {
+                console.log(err);
+                if (err == "GAGAL") {
+                    FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
+                } else {
+                    Session.set('isCreating', false);
+                    FlashMessages.sendSuccess('Thanks, your data is successfully saved');
+                }
+            });
 
-    Session.set('idEditing', "");
-    insertLogs("UPDATE DATA MEMBER ", " " + UserName() + " change data email or password user " + Session.get("namaMember").toUpperCase(),);
+            Session.set('idEditing', "");
+            insertLogs("UPDATE DATA MEMBER ", " " + username() + " change data email or password user " + Session.get("namaMember").toUpperCase(), "SUCCESS");
+        }
+    }
 
 };

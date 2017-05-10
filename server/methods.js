@@ -23,26 +23,17 @@ Meteor.methods({
 			Meteor.users.remove(_id);
 		}
 	},
-	updateUserData: function (_id, emailNew, passwordNew) {
-		let dataMember = MEMBER.findOne({'emails.address': emailNew});
-		if (!adaDATA(dataMember)) {
-			try {
-
-				if (emailNew !== "") {
-					if (adaDATA(MEMBER.findOne({_id: _id}).emails)) {
-						Accounts.removeEmail(_id, MEMBER.findOne({_id: _id}).emails[0].address);
-					}
-					Accounts.addEmail(_id, emailNew);
-				}
-				if (passwordNew !== "") {
-					Accounts.setPassword(_id, passwordNew);
-				}
-
-			} catch (e) {
-				throw new Meteor.Error(403, e.message);
-			}
-		}
-	},
+    updateUserData: function (_id, emailNew, passwordNew) {
+        if (emailNew !== "") {
+            if (adaDATA(MEMBER.findOne({_id: _id}).emails)) {
+                Accounts.removeEmail(_id, MEMBER.findOne({_id: _id}).emails[0].address);
+            }
+            Accounts.addEmail(_id, emailNew);
+        }
+        if (passwordNew !== "") {
+            Accounts.setPassword(_id, passwordNew);
+        }
+    },
 	updateFotoMember: function (oDataFoto, idSelector) {
 		if (!this.userId) {
 			throw new Meteor.Error(403, "You must be logged in");
