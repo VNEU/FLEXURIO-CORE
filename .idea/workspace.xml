@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf04c1ae-5cba-4acc-a854-475bfe48c0e5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/core/member.js" afterPath="$PROJECT_DIR$/client/views/core/member.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods.js" afterPath="$PROJECT_DIR$/server/methods.js" />
     </list>
     <ignored path="NUTRIMAX_SERVER_NEW.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -522,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494090213016</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update pass on setting - member">
+      <created>1494393980022</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1494393980022</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -581,7 +586,8 @@
     <MESSAGE value="update flxautocomplete" />
     <MESSAGE value="update menu" />
     <MESSAGE value="update how to use flx-autocomplate" />
-    <option name="LAST_COMMIT_MESSAGE" value="update how to use flx-autocomplate" />
+    <MESSAGE value="update pass on setting - member" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pass on setting - member" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
