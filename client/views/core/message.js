@@ -41,8 +41,8 @@ Template.message.onRendered(function () {
 
 Template.message.helpers({
     isiMessage: function () {
-        let converter = new Showdown.converter();
-        let isi = converter.makeHtml(this.text);
+        var converter = new Showdown.converter();
+        var isi = converter.makeHtml(this.text);
         return isi;
     },
 
@@ -74,17 +74,17 @@ Template.message.helpers({
         return MESSAGEMEMBER.find({idMessage: this._id});
     },
     messages: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let dataMESSAGE = MESSAGEMEMBER.find({username:EmailUser(), aktifYN: 1});
-        let idMessage = dataMESSAGE.map(function (p) {
+        var dataMESSAGE = MESSAGEMEMBER.find({username:EmailUser(), aktifYN: 1});
+        var idMessage = dataMESSAGE.map(function (p) {
             return p.idMessage
         });
 
-        let oFILTERS = {
+        var oFILTERS = {
             _id: {$in: idMessage},
             aktifYN: 1,
             $or: [
@@ -93,7 +93,7 @@ Template.message.helpers({
             ]
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         };
@@ -124,9 +124,9 @@ Template.message.events({
     },
 
     'change input#toMessage': function (e, tpl) {
-        let dataPilih = tpl.$('input[name="toMessage"]').val();
+        var dataPilih = tpl.$('input[name="toMessage"]').val();
         if (dataPilih.length > 10) {
-            let allmember = toMessage.get();
+            var allmember = toMessage.get();
             dataMember = MEMBER.findOne({username: dataPilih});
             if (adaDATA(dataMember)) {
                 allmember.push({username: dataMember.username});
@@ -139,7 +139,7 @@ Template.message.events({
     },
 
     'click a.hapusTerima': function (e, tpl) {
-        let penerimaAll = toMessage.get();
+        var penerimaAll = toMessage.get();
         penerimaAll = ArrayRemove(penerimaAll, 'username', e.currentTarget.id);
         toMessage.set(penerimaAll);
     },
@@ -205,9 +205,9 @@ Template.message.events({
 
 
 insertMESSAGE = function (tpl) {
-    let subjectMESSAGE = tpl.$('input[name="subjectMESSAGE"]').val();
-    let textMESSAGE = tpl.$('textarea[name="textMESSAGE"]').val();
-    let dataTo = toMessage.get();
+    var subjectMESSAGE = tpl.$('input[name="subjectMESSAGE"]').val();
+    var textMESSAGE = tpl.$('textarea[name="textMESSAGE"]').val();
+    var dataTo = toMessage.get();
 
     if (dataTo < 1) {
         FlashMessages.sendWarning('Hello ' + UserName() + ', please input person at "TO", use ENTER to add them. ');
@@ -232,7 +232,7 @@ insertMESSAGE = function (tpl) {
                 FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again, ' + err.toString());
             } else {
 
-                let aPenerima = {};
+                var aPenerima = {};
                 aPenerima.idMessage = id;
                 aPenerima.aktifYN = 1;
                 aPenerima.createByID = UserID();
@@ -266,15 +266,15 @@ insertMESSAGE = function (tpl) {
 updateMESSAGE = function (tpl) {
 
 
-    let fromEditMESSAGE = tpl.$('input[name="fromEditMESSAGE"]').val();
+    var fromEditMESSAGE = tpl.$('input[name="fromEditMESSAGE"]').val();
 
-    let toEditMESSAGE = tpl.$('input[name="toEditMESSAGE"]').val();
+    var toEditMESSAGE = tpl.$('input[name="toEditMESSAGE"]').val();
 
-    let ccEditMESSAGE = tpl.$('input[name="ccEditMESSAGE"]').val();
+    var ccEditMESSAGE = tpl.$('input[name="ccEditMESSAGE"]').val();
 
-    let subjectEditMESSAGE = tpl.$('input[name="subjectEditMESSAGE"]').val();
+    var subjectEditMESSAGE = tpl.$('input[name="subjectEditMESSAGE"]').val();
 
-    let textEditMESSAGE = tpl.$('input[name="textEditMESSAGE"]').val();
+    var textEditMESSAGE = tpl.$('input[name="textEditMESSAGE"]').val();
 
 
     if (!adaDATA(fromEditMESSAGE) | !adaDATA(toEditMESSAGE) | !adaDATA(ccEditMESSAGE) | !adaDATA(subjectEditMESSAGE) | !adaDATA(textEditMESSAGE)) {
@@ -314,7 +314,7 @@ deleteMESSAGE = function () {
         return;
     }
 
-    let dataMESSAGE = MESSAGEMEMBER.find({username:Meteor.user().username, idMessage:Session.get('idDeleting')});
+    var dataMESSAGE = MESSAGEMEMBER.find({username:Meteor.user().username, idMessage:Session.get('idDeleting')});
     dataMESSAGE.map(function (p) {
         MESSAGEMEMBER.update({_id: p._id},
             {

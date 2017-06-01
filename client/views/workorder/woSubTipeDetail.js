@@ -55,7 +55,7 @@ Template.woSubTipeDetail.helpers({
             aktifYN: 1
         }
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         }

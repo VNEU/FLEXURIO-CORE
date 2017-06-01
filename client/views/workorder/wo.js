@@ -86,12 +86,12 @@ Template.wo.helpers({
         return Session.get('isCreating');
     },
     wos: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaWO: {$regex: textSearch, $options: 'i'}},
                 {tipeWO: {$regex: textSearch, $options: 'i'}},
@@ -110,7 +110,7 @@ Template.wo.helpers({
             oFILTERS.createByID = UserID();
         }
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         };
@@ -129,19 +129,19 @@ Template.wo.events({
         e.preventDefault();
 
         if (this.status !== "FINISH") {
-            let sReportName = this.namaWO;
-            let sReportNumber = this.tipeWO + ' - ' + this.subTipeWO;
-            let sReportFootNote = this.createBy + '<BR>' + this.createAt;
-            let sCollections = "wo";
-            let sBackUrl = "wo";
-            let cCollectionsInitial = WO;
-            let aReportFilter = {aktifYN: 1, _id: this._id};
-            let aReportOptions = {
+            var sReportName = this.namaWO;
+            var sReportNumber = this.tipeWO + ' - ' + this.subTipeWO;
+            var sReportFootNote = this.createBy + '<BR>' + this.createAt;
+            var sCollections = "wo";
+            var sBackUrl = "wo";
+            var cCollectionsInitial = WO;
+            var aReportFilter = {aktifYN: 1, _id: this._id};
+            var aReportOptions = {
                 fields: {
                     keteranganWO: 1
                 }
             };
-            let oReportFieldDisplay = [
+            var oReportFieldDisplay = [
                 {"NAMA": this.detailTipeWO, "fields": "keteranganWO"}
             ];
 
@@ -152,12 +152,12 @@ Template.wo.events({
     },
     'change #subTipeWO': function (e, tpl) {
         e.preventDefault();
-        let ID_tipeWODipilih = tpl.$('select[name="subTipeWO"]').val();
+        var ID_tipeWODipilih = tpl.$('select[name="subTipeWO"]').val();
         Session.set("subTipeWO", ID_tipeWODipilih);
     },
     'change #tipeWO': function (e, tpl) {
         e.preventDefault();
-        let ID_tipeWODipilih = tpl.$('select[name="tipeWO"]').val();
+        var ID_tipeWODipilih = tpl.$('select[name="tipeWO"]').val();
         Session.set("tipeWOID", ID_tipeWODipilih);
     },
     'click a.cancel': function (e, tpl) {
@@ -289,11 +289,11 @@ Template.wo.events({
 
 insertWO = function (tpl) {
 
-    let namaWO = tpl.$('input[name="namaWO"]').val();
-    let tipeWO = SelectedTerpilih("tipeWO");
-    let subTipeWO = SelectedTerpilih("subTipeWO");
-    let detailTipeWO = SelectedTerpilih("detailTipeWO");
-    let keteranganWO = tpl.$('textarea[name="keteranganWO"]').val();
+    var namaWO = tpl.$('input[name="namaWO"]').val();
+    var tipeWO = SelectedTerpilih("tipeWO");
+    var subTipeWO = SelectedTerpilih("subTipeWO");
+    var detailTipeWO = SelectedTerpilih("detailTipeWO");
+    var keteranganWO = tpl.$('textarea[name="keteranganWO"]').val();
 
     if (!adaDATA(namaWO) | !adaDATA(tipeWO) | !adaDATA(subTipeWO) | !adaDATA(detailTipeWO) | !adaDATA(keteranganWO)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
@@ -337,14 +337,14 @@ insertWO = function (tpl) {
 
 updatePIC = function (tpl) {
 
-    let id = tpl.$('select[name="signTo"]').val();
-    let nama = SelectedTerpilih("signTo");
+    var id = tpl.$('select[name="signTo"]').val();
+    var nama = SelectedTerpilih("signTo");
 
     if (!adaDATA(nama)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
         return;
     } else {
-        let nama = MEMBER.findOne({_id: id}).profile.name;
+        var nama = MEMBER.findOne({_id: id}).profile.name;
     }
 
     WO.update({_id: Session.get('idSignTo')},
@@ -388,7 +388,7 @@ updatePIC = function (tpl) {
 
 updateWO = function (tpl) {
 
-    let keteranganWO = tpl.$('input[name="keteranganEditWO"]').val();
+    var keteranganWO = tpl.$('input[name="keteranganEditWO"]').val();
 
     if (!adaDATA(keteranganWO)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');

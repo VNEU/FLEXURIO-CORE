@@ -4,7 +4,7 @@
 
 Meteor.publish('member', function (iLimit, oFilter, oOptions) {
     if (this.userId) {
-        let oOPTIONS = Object.assign({}, {fields: {profile: 1, username:1}}, oOptions);
+        var oOPTIONS = Object.assign({}, {fields: {profile: 1, username:1}}, oOptions);
         oOPTIONS.limit = iLimit * 2;
         if (iLimit == 0) {
             delete oOPTIONS.limit;
@@ -22,11 +22,11 @@ Meteor.publish('member', function (iLimit, oFilter, oOptions) {
 
 Meteor.publish('menuGroup', function () {
     if (this.userId) {
-        let menuAuth = MENUAUTH.find({userId: this.userId});
-        let groupMENU = menuAuth.map(function (p) {
+        var menuAuth = MENUAUTH.find({userId: this.userId});
+        var groupMENU = menuAuth.map(function (p) {
             return p.groupMENU
         });
-        let oFILTERS = {aktifYN: 1, namaMENUGROUP: {$in: groupMENU}};
+        var oFILTERS = {aktifYN: 1, namaMENUGROUP: {$in: groupMENU}};
 
         if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
             return  MENUGROUP.find({aktifYN: 1});
@@ -42,12 +42,12 @@ Meteor.publish('menuGroup', function () {
 
 Meteor.publish('messageMember', function (iLimit) {
     if (this.userId) {
-        let thisusername = MEMBER.findOne({_id:this.userId}).username;
-        let dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN:1});
-        let idMessage = dataMESSAGE.map(function (p) {
+        var thisusername = MEMBER.findOne({_id:this.userId}).username;
+        var dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN:1});
+        var idMessage = dataMESSAGE.map(function (p) {
             return p.idMessage
         });
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: iLimit
         };
@@ -66,13 +66,13 @@ Meteor.publish('messageMember', function (iLimit) {
 
 Meteor.publish('message', function (iLimit) {
     if (this.userId) {
-        let thisusername = MEMBER.findOne({_id:this.userId}).username;
+        var thisusername = MEMBER.findOne({_id:this.userId}).username;
 
-        let dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN: 1});
-        let idMessage = dataMESSAGE.map(function (p) {
+        var dataMESSAGE = MESSAGEMEMBER.find({username:thisusername, aktifYN: 1});
+        var idMessage = dataMESSAGE.map(function (p) {
             return p.idMessage
         });
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: iLimit
         };
@@ -90,8 +90,8 @@ Meteor.publish('message', function (iLimit) {
 
 Meteor.publish('menu', function () {
     if (this.userId) {
-        let menuAuth = MENUAUTH.find({userId: this.userId});
-        let idMenu = menuAuth.map(function (p) {
+        var menuAuth = MENUAUTH.find({userId: this.userId});
+        var idMenu = menuAuth.map(function (p) {
             return p.idMENU
         });
         if (Roles.userIsInRole(this.userId, ['root', 'administrator'])) {
@@ -107,17 +107,17 @@ Meteor.publish('menu', function () {
 publishData = function (sNama, sObject, oWhere, oConditions) {
     Meteor.publish(sNama, function (iLimit, oFilter, oOptions) {
         // gabungkan OR
-        let atauALL = [{aktifYN: 1}, {aktifYN: "1"}, {aktifYN: 1}];
+        var atauALL = [{aktifYN: 1}, {aktifYN: "1"}, {aktifYN: 1}];
         if (adaDATA(oWhere["$or"])) {
             atauALL = atauALL.concat(oWhere["$or"]);
         }
-        let oFILTER_OR = oFilter["$or"];
+        var oFILTER_OR = oFilter["$or"];
         if (adaDATA(oFILTER_OR)) {
             atauALL = atauALL.concat(oFilter["$or"]);
         }
 
         // gabungkan AND
-        let andALL = [];
+        var andALL = [];
         if (adaDATA(oWhere["$and"])) {
             andALL = andALL.concat(oWhere["$and"]);
         }
@@ -146,7 +146,7 @@ publishData = function (sNama, sObject, oWhere, oConditions) {
 		}
 
         if (this.userId) {
-            let data = sObject.find(oFilter, oConditions);
+            var data = sObject.find(oFilter, oConditions);
             return data;
         } else {
             this.ready();

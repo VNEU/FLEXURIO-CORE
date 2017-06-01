@@ -43,13 +43,13 @@ Template.woTipe.helpers({
         return Session.get('isCreating');
     },
     woTipes: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaWOTIPE: {$regex: textSearch, $options: 'i'}},
                 {kodeWOTIPE: {$regex: textSearch, $options: 'i'}},
@@ -58,7 +58,7 @@ Template.woTipe.helpers({
             aktifYN: 1
         }
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         }
@@ -73,21 +73,21 @@ Template.woTipe.helpers({
 Template.woTipe.events({
     'click a.report': function (e, tpl) {
         e.preventDefault();
-        let sReportName = "ALL DATA TIPE WORK ORDER";
-        let sReportNumber = "FLX/2016/0001";
-        let sReportFootNote = "Total Tipe workorder = 23";
-        let sCollections = "woSubTipeDetail";
-        let sBackUrl = "woTipe";
-        let cCollectionsInitial = WOSUBTIPEDETAIL;
-        let aReportFilter = {aktifYN: 1};
-        let aReportOptions = {
+        var sReportName = "ALL DATA TIPE WORK ORDER";
+        var sReportNumber = "FLX/2016/0001";
+        var sReportFootNote = "Total Tipe workorder = 23";
+        var sCollections = "woSubTipeDetail";
+        var sBackUrl = "woTipe";
+        var cCollectionsInitial = WOSUBTIPEDETAIL;
+        var aReportFilter = {aktifYN: 1};
+        var aReportOptions = {
             fields: {
                 namaWOSUBTIPE: 1,
                 namaWOSUBTIPEDETAIL: 1,
                 aktifYN: 1
             }
         };
-        let oReportFieldDisplay = [
+        var oReportFieldDisplay = [
             {"NAMA": "SUB TIPE", "fields": "namaWOSUBTIPE"},
             {"NAMA": "SUB TIPE DETAIL", "fields": "namaWOSUBTIPEDETAIL"},
             {"NAMA": "AKTIF", "fields": "aktifYN"}
@@ -159,7 +159,7 @@ Template.woTipe.events({
 
 insertWOTIPE = function (tpl) {
 
-    let namaWOTIPE = tpl.$('input[name="namaWOTIPE"]').val();
+    var namaWOTIPE = tpl.$('input[name="namaWOTIPE"]').val();
 
     if (!adaDATA(namaWOTIPE)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
@@ -187,7 +187,7 @@ insertWOTIPE = function (tpl) {
 
 
 updateWOTIPE = function (tpl) {
-    let namaEditWOTIPE = tpl.$('input[name="namaEditWOTIPE"]').val();
+    var namaEditWOTIPE = tpl.$('input[name="namaEditWOTIPE"]').val();
 
     if (!adaDATA(namaEditWOTIPE)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');

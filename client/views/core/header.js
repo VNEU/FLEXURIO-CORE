@@ -20,7 +20,7 @@ Template.header.created = function () {
 };
 Template.header.helpers({
     showIcon: function () {
-        let sIcon = "";
+        var sIcon = "";
 
         if (getRoute(window.location.href) == "dash") {
             sIcon = "hidden-md hidden-lg";

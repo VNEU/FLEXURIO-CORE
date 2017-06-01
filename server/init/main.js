@@ -103,7 +103,7 @@ Meteor.startup(function () {
         });
     }
 
-    let idAdmin = MEMBER.findOne({'emails.address': 'admin@flexurio.com'})._id;
+    var idAdmin = MEMBER.findOne({'emails.address': 'admin@flexurio.com'})._id;
     Roles.addUsersToRoles(idAdmin, ['root', 'administrator'], Roles.GLOBAL_GROUP);
 
     Roles.getUsersInRole(['root', 'administrator']).map(function (user, index, originalCursor) {

@@ -41,7 +41,7 @@ Template.member.helpers({
         return sAvatar;
     },
     emailUsers: function () {
-        let emailUser = this.emails;
+        var emailUser = this.emails;
         if (adaDATA(emailUser)) {
             return this.emails[0].address;
         } else if (adaDATA(this.services)) {
@@ -58,17 +58,17 @@ Template.member.helpers({
         return Session.get('isCreating');
     },
     members: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {_id: -1},
             limit: Session.get('limit')
         };
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {_id: {$regex: textSearch, $options: 'i'}},
                 {'profile.name': {$regex: textSearch, $options: 'i'}},
@@ -153,11 +153,11 @@ Template.member.events({
 
 insertMEMBER = function (tpl) {
 
-    let textFirstName = tpl.$('input[name=textFirstName]').val();
-    let textLastName = tpl.$('input[name=textLastName]').val();
-    let textEmail = tpl.$('input[name=textEmail]').val();
-    let textPassword = tpl.$('input[name=textPassword]').val();
-    let textPasswordRetype = tpl.$('input[name=textPasswordRetype]').val();
+    var textFirstName = tpl.$('input[name=textFirstName]').val();
+    var textLastName = tpl.$('input[name=textLastName]').val();
+    var textEmail = tpl.$('input[name=textEmail]').val();
+    var textPassword = tpl.$('input[name=textPassword]').val();
+    var textPasswordRetype = tpl.$('input[name=textPasswordRetype]').val();
 
     if (textPassword != textPasswordRetype) {
         FlashMessages.sendWarning('Sorry, Please retype your password corectlly !');
@@ -184,9 +184,9 @@ insertMEMBER = function (tpl) {
 
 updateMEMBER = function (tpl) {
 
-    let emailNew = tpl.$('input[name="emailNew"]').val();
-    let newPassword = tpl.$('input[name="newPassword"]').val();
-    let retypePassword = tpl.$('input[name="retypePassword"]').val();
+    var emailNew = tpl.$('input[name="emailNew"]').val();
+    var newPassword = tpl.$('input[name="newPassword"]').val();
+    var retypePassword = tpl.$('input[name="retypePassword"]').val();
 
 
     if (!adaDATA(emailNew) & (!adaDATA(newPassword) | !adaDATA(retypePassword))) {

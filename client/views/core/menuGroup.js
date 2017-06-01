@@ -39,12 +39,12 @@ Template.menuGroup.helpers({
         return Session.get('isCreating');
     },
     menuGroups: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaMENUGROUP: {$regex: textSearch, $options: 'i'}},
                 {iconMENUGROUP: {$regex: textSearch, $options: 'i'}},
@@ -53,7 +53,7 @@ Template.menuGroup.helpers({
             aktifYN: 1
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {locationsMENU: 1},
             limit: Session.get('limit')
         };
@@ -131,9 +131,9 @@ Template.menuGroup.events({
 
 insertMENUGROUP = function (tpl) {
 
-    let namaMENUGROUP = tpl.$('input[name="namaMENUGROUP"]').val();
-    let iconMENUGROUP = tpl.$('input[name="iconMENUGROUP"]').val();
-    let locationsMENUGROUP = SelectedTerpilih('groupLocations');
+    var namaMENUGROUP = tpl.$('input[name="namaMENUGROUP"]').val();
+    var iconMENUGROUP = tpl.$('input[name="iconMENUGROUP"]').val();
+    var locationsMENUGROUP = SelectedTerpilih('groupLocations');
 
 
     if (!adaDATA(iconMENUGROUP) | !adaDATA(namaMENUGROUP)) {
@@ -166,9 +166,9 @@ insertMENUGROUP = function (tpl) {
 updateMENUGROUP = function (tpl) {
 
 
-    let namaEditMENUGROUP = tpl.$('input[name="namaEditMENUGROUP"]').val();
-    let iconEditMENUGROUP = tpl.$('input[name="iconEditMENUGROUP"]').val();
-    let locationsMENUGROUP = SelectedTerpilih('groupLocationsEDIT');
+    var namaEditMENUGROUP = tpl.$('input[name="namaEditMENUGROUP"]').val();
+    var iconEditMENUGROUP = tpl.$('input[name="iconEditMENUGROUP"]').val();
+    var locationsMENUGROUP = SelectedTerpilih('groupLocationsEDIT');
 
 
     if (!adaDATA(iconEditMENUGROUP) | !adaDATA(namaEditMENUGROUP)) {

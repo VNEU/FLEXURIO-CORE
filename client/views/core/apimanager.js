@@ -47,12 +47,12 @@ Template.apimanager.helpers({
         return Session.get('isCreating');
     },
     apimanagers: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oFILTERS = {
+        var oFILTERS = {
             aktifYN: 1,
             $or: [
                 {namaAPIMANAGER: {$regex: textSearch, $options:'i'}},
@@ -61,7 +61,7 @@ Template.apimanager.helpers({
             ]
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         };
@@ -132,7 +132,7 @@ Template.apimanager.events({
 
 insertAPIMANAGER = function (tpl) {
 
-    let namaAPIMANAGER = tpl.$('input[name="namaAPIMANAGER"]').val();
+    var namaAPIMANAGER = tpl.$('input[name="namaAPIMANAGER"]').val();
 
     if (!adaDATA(namaAPIMANAGER)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
@@ -161,7 +161,7 @@ insertAPIMANAGER = function (tpl) {
 
 updateAPIMANAGER = function (tpl) {
 
-    let namaEditAPIMANAGER = tpl.$('input[name="namaEditAPIMANAGER"]').val();
+    var namaEditAPIMANAGER = tpl.$('input[name="namaEditAPIMANAGER"]').val();
 
     if (!adaDATA(namaEditAPIMANAGER)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');

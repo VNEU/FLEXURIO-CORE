@@ -10,19 +10,19 @@ import './sidebar.html';
 Template.sidebar.created = function () {
     Blaze._allowJavascriptUrls();
 
-    let menuAuth = MENUAUTH.find({userId: UserID()});
-    let idMenu = menuAuth.map(function (p) {
+    var menuAuth = MENUAUTH.find({userId: UserID()});
+    var idMenu = menuAuth.map(function (p) {
         return p.idMENU
     });
 
-    let oFILTERMENU = {_id: {$in: idMenu}, groupMENU: this.namaMENUGROUP, aktifYN: 1};
+    var oFILTERMENU = {_id: {$in: idMenu}, groupMENU: this.namaMENUGROUP, aktifYN: 1};
 
     menuAuth = MENUAUTH.find({userId: UserID()});
-    let groupMENU = menuAuth.map(function (p) {
+    var groupMENU = menuAuth.map(function (p) {
         return p.groupMENU
     });
 
-    let oFILTERS = {aktifYN: 1, namaMENUGROUP: {$in: groupMENU}};
+    var oFILTERS = {aktifYN: 1, namaMENUGROUP: {$in: groupMENU}};
     if (adaDATA(Session.get("menuDept"))) {
         oFILTERS.namaMENUGROUP = Session.get("menuDept");
     } else {
@@ -63,7 +63,7 @@ Template.sidebar.helpers({
     },
     isLockMenu: function () {
         if(!adaDATA(Session.get("lockMenu"))) {
-            let dataLock = Meteor.user();
+            var dataLock = Meteor.user();
             if (adaDATA(dataLock)) {
                 Session.set("lockMenu", dataLock.profile.lockMenu);
             } else {
@@ -79,7 +79,7 @@ Template.sidebar.helpers({
         ;
     },
     showIcon: function () {
-        let sIcon = "";
+        var sIcon = "";
         if (Session.get("lockMenu")) {
             sIcon = "sidebar-md-show";
         }

@@ -31,11 +31,11 @@ Template.activitylogs.helpers({
         return Session.get('isDeleting');
     },
     activitylogss: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaACTIVITYLOGS: {$regex: textSearch, $options:'i'}},
                 {kodeACTIVITYLOGS: {$regex: textSearch, $options:'i'}},
@@ -43,7 +43,7 @@ Template.activitylogs.helpers({
             ]
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         };

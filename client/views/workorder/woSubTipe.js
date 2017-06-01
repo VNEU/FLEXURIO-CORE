@@ -40,12 +40,12 @@ Template.woSubTipe.helpers({
         return Session.get('isCreating');
     },
     woSubTipes: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaWOSUBTIPE: {$regex: textSearch, $options: 'i'}},
                 {kodeWOSUBTIPE: {$regex: textSearch, $options: 'i'}},
@@ -55,7 +55,7 @@ Template.woSubTipe.helpers({
             aktifYN: 1
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {createAt: -1},
             limit: Session.get('limit')
         };
@@ -142,7 +142,7 @@ Template.woSubTipe.events({
 
 insertWOSUBTIPE = function (tpl) {
 
-    let namaWOSUBTIPE = tpl.$('input[name="namaWOSUBTIPE"]').val();
+    var namaWOSUBTIPE = tpl.$('input[name="namaWOSUBTIPE"]').val();
 
     if (!adaDATA(namaWOSUBTIPE)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
@@ -174,7 +174,7 @@ insertWOSUBTIPE = function (tpl) {
 
 updateWOSUBTIPE = function (tpl) {
 
-    let namaEditWOSUBTIPE = tpl.$('input[name="namaEditWOSUBTIPE"]').val();
+    var namaEditWOSUBTIPE = tpl.$('input[name="namaEditWOSUBTIPE"]').val();
 
     if (!adaDATA(namaEditWOSUBTIPE)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');

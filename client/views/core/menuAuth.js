@@ -61,20 +61,20 @@ Template.menuAuth.helpers({
     },
 
     sideMenuGroup: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let dataMenu = MENU.find({namaMENU: {$regex: textSearch, $options: 'i'}});
-        let idGroupMenu = dataMenu.map(function (p) {
+        var dataMenu = MENU.find({namaMENU: {$regex: textSearch, $options: 'i'}});
+        var idGroupMenu = dataMenu.map(function (p) {
             return p.groupMENU
         });
 
         return MENUGROUP.find({namaMENUGROUP: {$in: idGroupMenu}}, {sort: {locationsMENUGROUP: 1}});
     },
     sideMenu: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
@@ -92,12 +92,12 @@ Template.menuAuth.helpers({
         return Session.get('isCreating');
     },
     menuAuths: function () {
-        let textSearch = '';
+        var textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        let oFILTERS = {
+        var oFILTERS = {
             $or: [
                 {namaMENU: {$regex: textSearch, $options: 'i'}},
                 {groupMENU: {$regex: textSearch, $options: 'i'}},
@@ -106,7 +106,7 @@ Template.menuAuth.helpers({
             userId: Session.get('idMember')
         };
 
-        let oOPTIONS = {
+        var oOPTIONS = {
             sort: {
                 groupMENU: -1,
                 namaMENU: -1
@@ -127,7 +127,7 @@ Template.menuAuth.helpers({
 Template.menuAuth.events({
     'keyup #searchBox': function (e, tpl) {
         e.preventDefault();
-        let textSearch = tpl.$('input[name="searchBox"]').val();
+        var textSearch = tpl.$('input[name="searchBox"]').val();
         Session.set('textSearch', textSearch);
     },
     'click a.allAuth': function (e, tpl) {
@@ -222,7 +222,7 @@ Template.menuAuth.events({
 });
 
 warnaMENU = function (sSession, id) {
-    let idMenu = Session.get(sSession);
+    var idMenu = Session.get(sSession);
     if (idMenu.indexOf(id) > -1) {
         return "green";
     } else {
@@ -230,8 +230,8 @@ warnaMENU = function (sSession, id) {
     }
 };
 centangMENU = function (e, sSession, isALL) {
-    let idPilih = e.currentTarget.name;
-    let idMenu = Session.get(sSession);
+    var idPilih = e.currentTarget.name;
+    var idMenu = Session.get(sSession);
     if (idMenu.indexOf(idPilih) > -1) {
         if (!isALL) {
             idMenu.splice(idMenu.indexOf(idPilih), 1);
@@ -243,17 +243,17 @@ centangMENU = function (e, sSession, isALL) {
 };
 
 insertMENUAUTH = function (tpl, authTIPE) {
-    let arrayList = Session.get("idMenu" + authTIPE);
+    var arrayList = Session.get("idMenu" + authTIPE);
 
     MENUAUTH.find({userId: Session.get('idMember'), authTipe: authTIPE}).forEach(function (obj) {
         MENUAUTH.remove({_id: obj._id});
     });
 
     for (let i = 0; i < arrayList.length; i++) {
-        let menuArray = MENU.findOne({_id: arrayList[i]});
-        let namaMENU = "";
-        let groupMENU = "";
-        let routerMENU = "";
+        var menuArray = MENU.findOne({_id: arrayList[i]});
+        var namaMENU = "";
+        var groupMENU = "";
+        var routerMENU = "";
         if (adaDATA(menuArray)) {
             namaMENU = menuArray.namaMENU;
             groupMENU = menuArray.groupMENU;
@@ -279,14 +279,14 @@ insertMENUAUTH = function (tpl, authTIPE) {
 };
 
 updateIdMenu = function () {
-    let menuADD = [];
-    let menuEDIT = [];
-    let menuDELETE = [];
-    let menuPRINT = [];
-    let menuCONFIRM = [];
-    let menuDOWNLOAD = [];
+    var menuADD = [];
+    var menuEDIT = [];
+    var menuDELETE = [];
+    var menuPRINT = [];
+    var menuCONFIRM = [];
+    var menuDOWNLOAD = [];
 
-    let DataAkses = MENUAUTH.find({userId: Session.get('idMember')});
+    var DataAkses = MENUAUTH.find({userId: Session.get('idMember')});
 
     DataAkses.forEach(function (obj) {
         if (obj.authTipe == "ADD") {
