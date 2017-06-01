@@ -96,6 +96,13 @@ Template.sidebar.helpers({
     },
     sideMenu: function () {
         return MENU.find({groupMENU: this.namaMENUGROUP, aktifYN: 1});
+    },
+    noBadge: function () {
+        if(Session.get(this.routerMENU) != "") {
+            FlashMessages.sendInfo('Hello' + UserName() + ', you have new data ' + this.namaMENU );
+        }
+        return Session.get(this.routerMENU);
     }
+
 
 });

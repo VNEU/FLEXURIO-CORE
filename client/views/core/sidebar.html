@@ -9,7 +9,10 @@
                 <ul class="nav navbar-stacked">
                     {{#each sideMenu}}
                         {{#if isAuthAdmin}}
-                            <li><a class='{{iconMENU}}' href="{{routerMENU}}" style="text-decoration: none;"> {{namaMENU}}</a></li>
+                            <li><a class='{{iconMENU}}' href="{{routerMENU}}" style="text-decoration: none;">
+                                {{namaMENU}}
+                                <span class="badge" style="background-color: {{sHeaderBackground}};color:white;">{{noBadge}}</span>
+                            </a></li>
                         {{/if}}
                     {{/each}}
                 </ul>

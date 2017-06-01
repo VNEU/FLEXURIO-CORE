@@ -96,6 +96,14 @@ Meteor.methods({
             Accounts.setPassword(_id, passwordNew);
         }
     },
+    badgeData: function (sRouter) {
+        var qty = countBadge(sRouter);
+        if(parseInt(qty) > 0) {
+            return  qty;
+        } else {
+            return  "";
+        }
+    },
 
 
 });
