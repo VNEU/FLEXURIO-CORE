@@ -4,19 +4,19 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4             # Packages every Meteor app needs to have
-mongo@1.1.17                   # The database Meteor supports right now
+meteor-base@1.1.0             # Packages every Meteor app needs to have
+mongo@1.1.18                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
 reactive-var@1.0.11            # Reactive variable for tracker
 jquery@1.11.10                  # Helpful client-side library
 tracker@1.1.3                 # Meteor's client-side reactive programming library
 
 standard-minifier-css@1.3.4   # CSS minifier run for production mode
-standard-minifier-js@2.0.0    # JS minifier run for production mode
+standard-minifier-js@2.1.0    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.7.3              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.8.0              # Enable ECMAScript2015+ syntax in app code
 
-accounts-base@1.2.17
+accounts-base@1.3.0
 accounts-password@1.3.6
 alanning:roles
 dapearce:material-icons
@@ -39,9 +39,9 @@ spacebars@1.0.12
 standard-minifiers@1.1.0
 fourseven:scss@3.8.0_1
 momentjs:moment
-accounts-google@1.1.2
-accounts-facebook@1.1.1
-accounts-twitter@1.2.1
+accounts-google@1.2.0
+accounts-facebook@1.2.0
+accounts-twitter@1.3.0
 shell-server@0.2.3
 jayuda:flx-qrcode
 jayuda:flx-chart
@@ -58,5 +58,6 @@ twitter-config-ui@1.0.0
 nimble:restivus
 flowkey:hotkeys
 jayuda:flx-autocomplete
-showdown
+showdown@1.0.8
 msavin:mongol
+dynamic-import
