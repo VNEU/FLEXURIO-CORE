@@ -29,14 +29,14 @@ ddp-rate-limiter@1.0.7
 ddp-server@1.3.14
 deps@1.0.12
 diff-sequence@1.0.7
-dynamic-import@0.1.0
+dynamic-import@0.1.1
 ecmascript@0.8.0
 ecmascript-runtime@0.4.1
 ecmascript-runtime-client@0.4.1
 ecmascript-runtime-server@0.4.1
 ejson@1.0.13
 eluck:accounts-lockout@0.9.0
-email@1.2.1
+email@1.2.3
 es5-shim@4.6.15
 facebook-config-ui@1.0.0
 facebook-oauth@1.3.1
