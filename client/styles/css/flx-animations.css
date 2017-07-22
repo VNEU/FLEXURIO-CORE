@@ -53,6 +53,25 @@
     animation-duration: 0.3s;
 }
 
+
+.animasiBawah
+{
+    -moz-animation-name: dropBawah;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-duration: 0.3s;
+
+    -webkit-animation-name: dropBawah;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 0.3s;
+
+    animation-name: dropBawah;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+}
+
 @-moz-keyframes dropSampingKanan {
     0% {
         -moz-transform: translateX(-300px);
@@ -125,6 +144,32 @@
 @keyframes dropAtas {
     0% {
         transform: translateY(-400px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@-moz-keyframes dropBawah {
+    0% {
+        -moz-transform: translateY(400px);
+    }
+    100% {
+        -moz-transform: translateY(0);
+    }
+}
+@-webkit-keyframes dropBawah {
+    0% {
+        -webkit-transform: translateY(400px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+@keyframes dropBawah {
+    0% {
+        transform: translateY(400px);
     }
     100% {
         transform: translateY(0);
