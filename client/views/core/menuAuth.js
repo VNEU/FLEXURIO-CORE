@@ -7,18 +7,18 @@
 import {Session} from "meteor/session";
 
 Template.menuAuth.created = function () {
-    Session.set('limit', 500);
-    Session.set('textSearch', '');
-    Session.set('namaHeader', 'AUTHENTICATION MENU');
-    Session.set('dataDelete', '');
-    Session.set('isCreating', false); Session.set('isEditing', false);
-    Session.set('isDeleting', false);
-
-    updateIdMenu();
-
     if (!adaDATA(Session.get('idMember'))) {
         Router.go("member");
     }
+
+    Session.set('limit', 500);
+    Session.set('textSearch', '');
+    Session.set('namaHeader', 'AUTH USER : ' + Session.get('namaMember').toUpperCase());
+    subscribtion('memberku', {}, {}, 0);
+    subscribtion('menu', {}, {}, 0);
+    subscribtion('menuAuthku', {}, {}, 0);
+    subscribtion('menuGroup', {}, {}, 0);
+
 
     this.autorun(function () {
         subscribtion('menuAuth', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
@@ -42,39 +42,39 @@ Template.menuAuth.helpers({
         return sGeneralFont;
     },
     DownloadDiPilih: function () {
-        return warnaMENU("idMenuDOWNLOAD", this._id);
+        return warnaMENU("DOWNLOAD", this._id);
     },
     PrintDiPilih: function () {
-        return warnaMENU("idMenuPRINT", this._id);
+        return warnaMENU("PRINT", this._id);
     },
     ConfirmDiPilih: function () {
-        return warnaMENU("idMenuCONFIRM", this._id);
+        return warnaMENU("CONFIRM", this._id);
     },
     AddDiPilih: function () {
-        return warnaMENU("idMenuADD", this._id);
+        return warnaMENU("ADD", this._id);
     },
     EditDiPilih: function () {
-        return warnaMENU("idMenuEDIT", this._id);
+        return warnaMENU("EDIT", this._id);
     },
     DeleteDiPilih: function () {
-        return warnaMENU("idMenuDELETE", this._id);
+        return warnaMENU("DELETE", this._id);
     },
 
     sideMenuGroup: function () {
-        var textSearch = '';
+        let textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
 
-        var dataMenu = MENU.find({namaMENU: {$regex: textSearch, $options: 'i'}});
-        var idGroupMenu = dataMenu.map(function (p) {
+        let dataMenu = MENU.find({namaMENU: {$regex: textSearch, $options: 'i'}});
+        let idGroupMenu = dataMenu.map(function (p) {
             return p.groupMENU
         });
 
         return MENUGROUP.find({namaMENUGROUP: {$in: idGroupMenu}}, {sort: {locationsMENUGROUP: 1}});
     },
     sideMenu: function () {
-        var textSearch = '';
+        let textSearch = '';
         if (adaDATA(Session.get('textSearch'))) {
             textSearch = Session.get('textSearch').replace('#', '').trim();
         }
@@ -91,228 +91,79 @@ Template.menuAuth.helpers({
     isCreating: function () {
         return Session.get('isCreating');
     },
-    menuAuths: function () {
-        var textSearch = '';
-        if (adaDATA(Session.get('textSearch'))) {
-            textSearch = Session.get('textSearch').replace('#', '').trim();
-        }
-
-        var oFILTERS = {
-            $or: [
-                {namaMENU: {$regex: textSearch, $options: 'i'}},
-                {groupMENU: {$regex: textSearch, $options: 'i'}},
-                {authTipe: {$regex: textSearch, $options: 'i'}},
-            ],
-            userId: Session.get('idMember')
-        };
-
-        var oOPTIONS = {
-            sort: {
-                groupMENU: -1,
-                namaMENU: -1
-            },
-            limit: Session.get('limit')
-        };
-
-        Session.set('oOPTIONS', oOPTIONS);
-        Session.set('oFILTERS', oFILTERS);
-
-        return MENUAUTH.find(
-            oFILTERS,
-            oOPTIONS
-        );
-    }
 });
 
 Template.menuAuth.events({
     'keyup #searchBox': function (e, tpl) {
         e.preventDefault();
-        var textSearch = tpl.$('input[name="searchBox"]').val();
+        let textSearch = tpl.$('input[name="searchBox"]').val();
         Session.set('textSearch', textSearch);
     },
     'click a.allAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuADD", true);
-        centangMENU(e, "idMenuEDIT", true);
-        centangMENU(e, "idMenuDELETE", true);
-        centangMENU(e, "idMenuDOWNLOAD", true);
-        centangMENU(e, "idMenuPRINT", true);
-        centangMENU(e, "idMenuCONFIRM", true);
+        insertMENUAUTH("ADD", this._id);
+        insertMENUAUTH("EDIT", this._id);
+        insertMENUAUTH("DELETE", this._id);
+        insertMENUAUTH("DOWNLOAD", this._id);
+        insertMENUAUTH("PRINT", this._id);
+        insertMENUAUTH("CONFIRM", this._id);
     },
     'click a.downloadAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuDOWNLOAD", false);
+        insertMENUAUTH("DOWNLOAD", this._id);
     },
     'click a.printAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuPRINT", false);
+        insertMENUAUTH("PRINT", this._id);
     },
     'click a.confirmAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuCONFIRM", false);
+        insertMENUAUTH("CONFIRM", this._id);
     },
     'click a.addAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuADD", false);
+        insertMENUAUTH("ADD", this._id);
     },
     'click a.editAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuEDIT", false);
+        insertMENUAUTH("EDIT", this._id);
     },
     'click a.deleteAuth': function (e, tpl) {
         e.preventDefault();
-        centangMENU(e, "idMenuDELETE", false);
+        insertMENUAUTH("DELETE", this._id);
     },
 
-    'click a.back': function (e, tpl) {
-        e.preventDefault();
-        Router.go("member");
-    },
-
-    'click a.cancel': function (e, tpl) {
-        e.preventDefault();
-        Session.set('isCreating', false); Session.set('isEditing', false);
-        Session.set('isDeleting', false);
-        Session.set("idMenu", []);
-    },
-
-    'click a.deleteDataOK': function (e, tpl) {
-        e.preventDefault();
-        MENUAUTH.remove(Session.get('idDeleting'));
-        FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
-    },
-    'click a.deleteData': function (e, tpl) {
-        e.preventDefault();
-        Session.set('isDeleting', true);
-        Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaMENU);
-        Session.set('idDeleting', this._id);
-    },
-
-    'click a.create': function (e, tpl) {
-        e.preventDefault();
-        updateIdMenu();
-        Scroll2Top();
-        Session.set('isCreating', true);
-        Session.set('idUser', this._id);
-    },
-    'keyup #namaMENUAUTH': function (e, tpl) {
-        e.preventDefault();
-        if (e.keyCode == 13) {
-            insertMENUAUTH(tpl);
-        }
-    },
-    'click a.save': function (e, tpl) {
-        e.preventDefault();
-        insertMENUAUTH(tpl, "ADD");
-        insertMENUAUTH(tpl, "EDIT");
-        insertMENUAUTH(tpl, "DELETE");
-        insertMENUAUTH(tpl, "PRINT");
-        insertMENUAUTH(tpl, "CONFIRM");
-        insertMENUAUTH(tpl, "DOWNLOAD");
-        Session.set('isCreating', false);
-        updateIdMenu();
-    },
-
-    'click a.editData': function (e, tpl) {
-        e.preventDefault();
-        updateIdMenu();
-        Session.set('isCreating', true);
-    }
 });
 
-warnaMENU = function (sSession, id) {
-    var idMenu = Session.get(sSession);
-    if (idMenu.indexOf(id) > -1) {
+warnaMENU = function (authTipe, idMenu) {
+    var dataAUTH = MENUAUTH.find({userId: Session.get('idMember'), idMENU: idMenu, authTipe: authTipe}).fetch();
+    if (adaDATA(dataAUTH)) {
         return "green";
     } else {
         return "gray";
     }
 };
-centangMENU = function (e, sSession, isALL) {
-    var idPilih = e.currentTarget.name;
-    var idMenu = Session.get(sSession);
-    if (idMenu.indexOf(idPilih) > -1) {
-        if (!isALL) {
-            idMenu.splice(idMenu.indexOf(idPilih), 1);
-        }
+
+insertMENUAUTH = function (authTipe, idMenu) {
+    var menuArray = MENU.findOne({_id: idMenu});
+    var dataAUTH = MENUAUTH.find({userId: Session.get('idMember'), idMENU: idMenu, authTipe: authTipe});
+    if (adaDATA(dataAUTH.fetch())) {
+        dataAUTH.forEach(function (obj) {
+            MENUAUTH.remove({_id: obj._id});
+        });
+        insertLogs("AUTH MEMBER", UserName() + " REMOVE Authentication type `" + authTipe + "` to " + Session.get("namaMember").toUpperCase() + " MENU : " + menuArray.namaMENU + "");
     } else {
-        idMenu.push(idPilih);
-    }
-    Session.set(sSession, idMenu);
-};
-
-insertMENUAUTH = function (tpl, authTIPE) {
-    var arrayList = Session.get("idMenu" + authTIPE);
-
-    MENUAUTH.find({userId: Session.get('idMember'), authTipe: authTIPE}).forEach(function (obj) {
-        MENUAUTH.remove({_id: obj._id});
-    });
-
-    for (let i = 0; i < arrayList.length; i++) {
-        var menuArray = MENU.findOne({_id: arrayList[i]});
-        var namaMENU = "";
-        var groupMENU = "";
-        var routerMENU = "";
-        if (adaDATA(menuArray)) {
-            namaMENU = menuArray.namaMENU;
-            groupMENU = menuArray.groupMENU;
-            routerMENU = menuArray.routerMENU;
-        } else {
-            return;
-        }
-
         MENUAUTH.insert(
             {
                 userId: Session.get('idMember'),
-                idMENU: arrayList[i],
-                namaMENU: namaMENU,
-                groupMENU: groupMENU,
-                routerMENU: routerMENU,
-                authTipe: authTIPE
+                idMENU: idMenu,
+                namaMENU: menuArray.namaMENU,
+                groupMENU: menuArray.groupMENU,
+                routerMENU: menuArray.routerMENU,
+                authTipe: authTipe
             }
         );
-
-        insertLogs("AUTH MEMBER", UserName() + " update AUTH " + authTIPE + " to " + Session.get("namaMember").toUpperCase() + " MENU : " + namaMENU + "");
-
+        insertLogs("AUTH MEMBER", UserName() + " ALLOW Authentication type `" + authTipe + "` to " + Session.get("namaMember").toUpperCase() + " MENU : " + menuArray.namaMENU + "");
     }
-};
 
-updateIdMenu = function () {
-    var menuADD = [];
-    var menuEDIT = [];
-    var menuDELETE = [];
-    var menuPRINT = [];
-    var menuCONFIRM = [];
-    var menuDOWNLOAD = [];
-
-    var DataAkses = MENUAUTH.find({userId: Session.get('idMember')});
-
-    DataAkses.forEach(function (obj) {
-        if (obj.authTipe == "ADD") {
-            menuADD.push(obj.idMENU);
-        }
-        if (obj.authTipe == "EDIT") {
-            menuEDIT.push(obj.idMENU);
-        }
-        if (obj.authTipe == "DELETE") {
-            menuDELETE.push(obj.idMENU);
-        }
-        if (obj.authTipe == "PRINT") {
-            menuPRINT.push(obj.idMENU);
-        }
-        if (obj.authTipe == "CONFIRM") {
-            menuCONFIRM.push(obj.idMENU);
-        }
-        if (obj.authTipe == "DOWNLOAD") {
-            menuDOWNLOAD.push(obj.idMENU);
-        }
-    });
-
-    Session.set("idMenuADD", menuADD);
-    Session.set("idMenuEDIT", menuEDIT);
-    Session.set("idMenuDELETE", menuDELETE);
-    Session.set("idMenuDOWNLOAD", menuDOWNLOAD);
-    Session.set("idMenuPRINT", menuPRINT);
-    Session.set("idMenuCONFIRM", menuCONFIRM);
 };

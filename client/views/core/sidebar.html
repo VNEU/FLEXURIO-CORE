@@ -4,13 +4,13 @@
         {{#each sideMenuGroup}}
             <div class="list-group panel panel-default flexSidebar">
                 <div class="panel-heading shadow-z-1">
-                    <p class="{{iconMENUGROUP}}" style="color: {{sGeneralFont}};"> {{namaMENUGROUP}}</p>
+                    <p class="{{iconMENUGROUP}}" style="color: {{sGeneralFont}};">&nbsp;{{namaMENUGROUP}}</p>
                 </div>
                 <ul class="nav navbar-stacked">
                     {{#each sideMenu}}
                         {{#if isAuthAdmin}}
                             <li><a class='{{iconMENU}}' href="{{routerMENU}}" style="text-decoration: none;">
-                                {{namaMENU}}
+                                &nbsp;{{namaMENU}}
                                 <span class="badge" style="background-color: {{sHeaderBackground}};color:white;">{{noBadge}}</span>
                             </a></li>
                         {{/if}}

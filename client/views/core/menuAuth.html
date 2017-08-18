@@ -5,85 +5,40 @@
     <div class='container-fluid app'>
         {{>utama}}
         {{>menuSearch}}
-        {{>menuBack}}
-        <div style="position: fixed; bottom: 80px; right: 20px;z-index: 1000;">
-            <a href="#" class="create btn btn-fab btn-fab-mini btn-raised shadow-z-4 shadow-z-2" style="background-color:{{sHeaderBackground}};"><span class="glyphicon glyphicon-cog" style="background-color:{{sHeaderBackground}};color: {{sGeneralFont}};font-size: large;position: relative;top:7px;"></span></a>
-        </div>
-
         <div class='row main {{isLockMenu}} animasiAtas'>
+            {{>headerListview}}
 
-            <!-- HEADER LISTVIEW -->
-            <div class='list-group panel panel-default headerApp'>
-                {{>headerListview}}
-
-                {{#each menuAuths}}
-                    <div class='list-group-item'>
-                        <div class='row-content'>
-                            <BR>
-                            <p>
-                                {{groupMENU}} - {{namaMENU}} - {{authTipe}}
-                            </p>
-
-                            <div class='least-content' style='top:20px;'>
-                               <a class="editData" style="color:orange;" data-toggle="tooltip" title="EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;
-                               <a class="deleteData" style="color:red;"  data-toggle="tooltip" title="DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
-                            </div>
+            <div class='container animasiAtas headerApp'>
+                {{#each sideMenuGroup}}
+                    <div class="list-group panel panel-default flexSidebar">
+                        <div class="panel-heading shadow-z-1">
+                            <p class="{{iconMENUGROUP}}" style="color: {{sGeneralFont}};">&nbsp;&nbsp;{{namaMENUGROUP}}</p>
                         </div>
+                        <ul class="nav navbar-stacked">
+                            {{#each sideMenu}}
+                                <BR>
+                                <li style="width:96%;left:2%;">
+                                    <div style='position:relative;top:5px;' class="pull-right">
+                                        <a name="{{_id}}" class="allAuth" style="color:{{AllDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION ALL"><span class="glyphicon glyphicon-star"></span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <a name="{{_id}}" class="confirmAuth" style="color:{{ConfirmDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION CONFIRM DATA"><span class="glyphicon glyphicon-certificate"></span></a> &nbsp;&nbsp;&nbsp;
+
+                                        <a name="{{_id}}" class="printAuth" style="color:{{PrintDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION PRINT DATA"><span class="glyphicon glyphicon-print"></span></a> &nbsp;&nbsp;&nbsp;
+                                        <a name="{{_id}}" class="downloadAuth" style="color:{{DownloadDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION DOWNLOAD DATA"><span class="glyphicon glyphicon-download-alt"></span></a> &nbsp;&nbsp;&nbsp;
+                                        <a name="{{_id}}" class="addAuth" style="color:{{AddDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION ADD DATA"><span class="glyphicon glyphicon-plus"></span></a> &nbsp;&nbsp;&nbsp;
+                                        <a name="{{_id}}" class="editAuth" style="color:{{EditDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;
+                                        <a name="{{_id}}" class="deleteAuth" style="color:{{DeleteDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </div>
+                                    <p class='menuPilih {{iconMENU}}' style="color:{{sGeneralFont}};">&nbsp;&nbsp;{{namaMENU}}</p>
+                                </li>
+                            {{/each}}
+                            <BR><BR><BR>
+                        </ul>
                     </div>
-                    
                 {{/each}}
             </div>
+
         </div>
-
-        {{#if isCreating}}
-            {{>blockModals}}
-            <div class='container animasiAtas' style='position:fixed;top:10%;left:10%;width:80%;z-index:10001;'>
-                <div class='col-md-12'>
-                    <div class="form-group label-floating has-info col-md-8">
-                        <label for="searchBox" class="control-label" style="color: {{sGeneralFont}};">Search Menu</label>
-                        <input name="searchBox" id="searchBox" type="text" class="form-control has-info" style="font-size: medium;color: {{sGeneralFont}};border-color: color: {{sGeneralFont}};">
-                    </div>
-                    <div class="col-md-4">
-                        <div class='pull-right'>
-                            <a class='save btn btn-primary' style='background-color:green;color:white;'>SAVE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='col-md-12' style="height:{{sTinggiPopUp}}px;overflow-y:scroll;">
-                    {{#each sideMenuGroup}}
-                        <div class="list-group panel panel-default flexSidebar">
-                            <div class="panel-heading shadow-z-1">
-                                <p class="{{iconMENUGROUP}}" style="color: {{sGeneralFont}};"> {{namaMENUGROUP}}</p>
-                            </div>
-                            <ul class="nav navbar-stacked">
-                                {{#each sideMenu}}
-                                    <BR>
-                                    <li style="width:96%;left:2%;">
-                                        <div style='position:relative;top:5px;' class="pull-right">
-                                            <a name="{{_id}}" class="allAuth" style="color:{{AllDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION ALL"><span class="glyphicon glyphicon-star"></span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            <a name="{{_id}}" class="confirmAuth" style="color:{{ConfirmDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION CONFIRM DATA"><span class="glyphicon glyphicon-certificate"></span></a> &nbsp;&nbsp;&nbsp;
-
-                                            <a name="{{_id}}" class="printAuth" style="color:{{PrintDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION PRINT DATA"><span class="glyphicon glyphicon-print"></span></a> &nbsp;&nbsp;&nbsp;
-                                            <a name="{{_id}}" class="downloadAuth" style="color:{{DownloadDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION DOWNLOAD DATA"><span class="glyphicon glyphicon-download-alt"></span></a> &nbsp;&nbsp;&nbsp;
-                                            <a name="{{_id}}" class="addAuth" style="color:{{AddDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION ADD DATA"><span class="glyphicon glyphicon-plus"></span></a> &nbsp;&nbsp;&nbsp;
-                                            <a name="{{_id}}" class="editAuth" style="color:{{EditDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION EDIT DATA"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;&nbsp;&nbsp;
-                                            <a name="{{_id}}" class="deleteAuth" style="color:{{DeleteDiPilih}};" data-toggle="tooltip" title="AUTHENTICATION DELETE DATA"><span class="glyphicon glyphicon-trash"></span></a>
-                                        </div>
-                                        <p class='menuPilih {{iconMENU}}' style="color:{{sGeneralFont}};"> {{namaMENU}}</p>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-        {{/if}}
-
-        {{#if isDeleting}}
-            {{>formDeleting}}
-        {{/if}}
 
     </div>
 
