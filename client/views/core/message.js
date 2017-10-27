@@ -20,7 +20,7 @@ Template.message.created = function () {
     Session.set('dataDelete', '');
     Session.set('isCreating', false);
     Session.set('isEditing', false);
-    Session.set('isDeleting', false);
+
     Session.set('oFILTERSMembers', {});
     Session.set('oFILTERS', {});
     Session.set('oOPTIONS', {});
@@ -63,9 +63,6 @@ Template.message.helpers({
     },
     sTinggiPopUp: function () {
         return 0.8 * ($(window).height());
-    },
-    isDeleting: function () {
-        return Session.get('isDeleting');
     },
     isCreating: function () {
         return Session.get('isCreating');
@@ -148,20 +145,20 @@ Template.message.events({
         Session.set('isCreating', false);
         Session.set('isEditing', false);
         Session.set('idEditing', '');
-        Session.set('isDeleting', false);
+
     },
 
     'click a.deleteDataOK': function (e, tpl) {
         e.preventDefault();
         deleteMESSAGE();
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('hide');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
-        Session.set('isDeleting', true);
         Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' "' + this.subject + '" From "' + this.createBy + '" ');
         Session.set('idDeleting', this._id);
+        $("#modal_formDeleting").modal('show');
     },
 
     'click a.create': function (e, tpl) {

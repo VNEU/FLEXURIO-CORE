@@ -6,12 +6,11 @@
         {{>utama}}
         {{>menuSearch}}
         {{>menuAdd}}
-        <div class='row main {{isLockMenu}} animasiAtas'>
+        {{>formDeleting}}
 
-            <!-- HEADER LISTVIEW -->
+        <div class='row main {{isLockMenu}} animasiAtas'>
             <div class='list-group panel panel-default headerApp'>
                 {{>headerListview}}
-
                 {{#each woTipes}}
                     <div class='list-group-item'>
                         <div class='row-content'>
@@ -19,7 +18,6 @@
                             <p>
                                 {{namaWOTIPE}}
                             </p>
-
                             <div class='least-content' style='top:20px;'>
                                 <a class="subTipeData" style="color:blue;" data-toggle="tooltip" title="DATA PROVINSI"><span class="glyphicon glyphicon-th-large"></span></a> &nbsp;&nbsp;&nbsp;
                                 {{>actionListview}}
@@ -46,10 +44,6 @@
                 </div>
             </div>
         </div>
-
-        {{#if isDeleting}}
-            {{>formDeleting}}
-        {{/if}}
 
     </div>
 

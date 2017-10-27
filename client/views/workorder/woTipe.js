@@ -15,9 +15,6 @@ Template.woTipe.created = function () {
     Session.set('textSearch', '');
     Session.set('namaHeader', 'TIPE WORK ORDER');
     Session.set('dataDelete', '');
-    Session.set('isCreating', false);
-    Session.set('isEditing', false);
-    Session.set('isDeleting', false);
 
     this.autorun(function () {
         subscribtion('woTipe', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
@@ -32,15 +29,6 @@ Template.woTipe.onRendered(function () {
 Template.woTipe.helpers({
     isLockMenu: function () {
         return isLockMenu();
-    },
-    isEditing: function () {
-        return Session.get('idEditing') === this._id;
-    },
-    isDeleting: function () {
-        return Session.get('isDeleting');
-    },
-    isCreating: function () {
-        return Session.get('isCreating');
     },
     woTipes: function () {
         var textSearch = '';
@@ -71,32 +59,6 @@ Template.woTipe.helpers({
 });
 
 Template.woTipe.events({
-    'click a.report': function (e, tpl) {
-        e.preventDefault();
-        var sReportName = "ALL DATA TIPE WORK ORDER";
-        var sReportNumber = "FLX/2016/0001";
-        var sReportFootNote = "Total Tipe workorder = 23";
-        var sCollections = "woSubTipeDetail";
-        var sBackUrl = "woTipe";
-        var cCollectionsInitial = WOSUBTIPEDETAIL;
-        var aReportFilter = {aktifYN: 1};
-        var aReportOptions = {
-            fields: {
-                namaWOSUBTIPE: 1,
-                namaWOSUBTIPEDETAIL: 1,
-                aktifYN: 1
-            }
-        };
-        var oReportFieldDisplay = [
-            {"NAMA": "SUB TIPE", "fields": "namaWOSUBTIPE"},
-            {"NAMA": "SUB TIPE DETAIL", "fields": "namaWOSUBTIPEDETAIL"},
-            {"NAMA": "AKTIF", "fields": "aktifYN"}
-        ];
-
-        setREPORT(sReportName, sReportNumber, sReportFootNote, sCollections, sBackUrl, cCollectionsInitial, aReportFilter, aReportOptions, oReportFieldDisplay);
-
-    },
-
     'click a.subTipeData': function (e, tpl) {
         e.preventDefault();
         Session.set('kodeWOTIPE', this._id);
@@ -105,23 +67,21 @@ Template.woTipe.events({
     },
     'click a.cancel': function (e, tpl) {
         e.preventDefault();
-        Session.set('isCreating', false);
-        Session.set('isEditing', false);
-        Session.set('idEditing', '');
-        Session.set('isDeleting', false);
+        Session.set('idEditing', null);
+
     },
 
     'click a.deleteDataOK': function (e, tpl) {
         e.preventDefault();
         deleteWOTIPE();
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('hide');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
-        Session.set('isDeleting', true);
         Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaWOTIPE);
         Session.set('idDeleting', this._id);
+        $("#modal_formDeleting").modal('show');
     },
 
     'click a.create': function (e, tpl) {
@@ -131,7 +91,7 @@ Template.woTipe.events({
     'keyup #namaWOTIPE': function (e, tpl) {
         e.preventDefault();
         if (e.keyCode == 13) {
-            if(adaDATA(Session.set('idEditing'))) {
+            if (adaDATA(Session.get('idEditing'))) {
                 updateWOTIPE(tpl);
             } else {
                 insertWOTIPE(tpl);
@@ -140,7 +100,7 @@ Template.woTipe.events({
     },
     'click a.save': function (e, tpl) {
         e.preventDefault();
-        if(adaDATA(Session.set('idEditing'))) {
+        if (adaDATA(Session.get('idEditing'))) {
             updateWOTIPE(tpl);
         } else {
             insertWOTIPE(tpl);
@@ -219,7 +179,6 @@ deleteWOTIPE = function () {
         FlashMessages.sendWarning('Please select data that you want to remove . . .');
         return;
     }
-
     WOTIPE.update({_id: Session.get('idDeleting')},
         {
             $set: {

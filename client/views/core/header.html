@@ -33,14 +33,18 @@
 </template>
 
 <template name="formDeleting">
-    {{>blockModals}}
-    <div class="container animasiAtas" style="position:fixed;top:20%;left:10%;width:80%;z-index:10001;">
-        <div class="col-md-12">
-            <h3>Are you sure delete {{dataDelete}} ?</h3>
-        </div>
-
-        <div class="pull-right">
-            <a class="deleteDataOK btn btn-danger" style="color:white;background-color:red;">DELETE</a>
+    <div class="modal_formDeleting modal" id="modal_formDeleting" name="modal_formDeleting">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class='form-group label-floating has-info col-md-12'>
+                        <h3>Are you sure delete {{dataDelete}} ?</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <a class='deleteDataOK btn' style='background-color:red;color:white;'>DELETE</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

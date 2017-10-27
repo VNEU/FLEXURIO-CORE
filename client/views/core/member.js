@@ -14,7 +14,7 @@ Template.member.created = function () {
     Session.set('namaHeader', 'DATA MEMBER');
     Session.set('dataDelete', '');
     Session.set('isCreating', false); Session.set('isEditing', false);
-    Session.set('isDeleting', false);
+
     SetFOTO(200, 300, 'updateFotoBackground', pictProfileBackground(""), "");
 
     this.autorun(function () {
@@ -50,9 +50,6 @@ Template.member.helpers({
     },
     isEditing: function () {
         return Session.get('idEditing') === this._id;
-    },
-    isDeleting: function () {
-        return Session.get('isDeleting');
     },
     isCreating: function () {
         return Session.get('isCreating');
@@ -95,20 +92,20 @@ Template.member.events({
         e.preventDefault();
         Session.set('isCreating', false); Session.set('isEditing', false);
         Session.set('idEditing', '');
-        Session.set('isDeleting', false);
+
     },
 
     'click a.deleteDataOK': function (e, tpl) {
         e.preventDefault();
         Meteor.call('deleteUser', Session.get("idDeleting"));
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('hide');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
-        Session.set('isDeleting', true);
         Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.profile.name);
         Session.set('idDeleting', this._id);
+        $("#modal_formDeleting").modal('show');
     },
 
     'click a.create': function (e, tpl) {

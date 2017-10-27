@@ -85,9 +85,6 @@ Template.menuAuth.helpers({
             }
         );
     },
-    isDeleting: function () {
-        return Session.get('isDeleting');
-    },
     isCreating: function () {
         return Session.get('isCreating');
     },

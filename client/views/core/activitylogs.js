@@ -11,7 +11,7 @@ Template.activitylogs.created = function () {
     Session.set('textSearch', '');
     Session.set('namaHeader', 'ACTIVITY LOGS');
     Session.set('dataDelete', '');
-    Session.set('isDeleting', false);
+
 
     this.autorun(function () {
         subscribtion('activitylogs', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
@@ -25,10 +25,6 @@ Template.activitylogs.onRendered(function () {
 Template.activitylogs.helpers({
     isLockMenu: function () {
         return isLockMenu();
-    },
-
-    isDeleting: function () {
-        return Session.get('isDeleting');
     },
     activitylogss: function () {
         var textSearch = '';
@@ -61,19 +57,19 @@ Template.activitylogs.events({
     'click a.cancel': function (e, tpl) {
         e.preventDefault();
         Session.set('isCreating', false); Session.set('isEditing', false);
-        Session.set('isDeleting', false);
+
     },
 
     'click a.deleteDataOK': function (e, tpl) {
         e.preventDefault();
         ACTIVITYLOGS.remove(Session.get('idDeleting'));
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('hide');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
-        Session.set('isDeleting', true);
         Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaACTIVITYLOGS);
         Session.set('idDeleting', this._id);
+        $("#modal_formDeleting").modal('show');
     }
 });

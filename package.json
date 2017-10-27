@@ -2,6 +2,7 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "bcrypt": "^0.8.7",
-    "redis": "^2.7.1"
+    "redis": "^2.7.1",
+    "sweetalert": "^2.0.8"
   }
 }

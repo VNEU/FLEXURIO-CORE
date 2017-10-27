@@ -13,7 +13,7 @@ Template.wo.created = function () {
     Session.set('namaHeader', 'WORK ORDER');
     Session.set('dataDelete', '');
     Session.set('isCreating', false); Session.set('isEditing', false);
-    Session.set('isDeleting', false);
+
     Session.set('idSignTo', "");
 
     subscribtion('woTipe', {aktifYN: 1}, {}, 0);
@@ -71,13 +71,6 @@ Template.wo.helpers({
     isEditing: function () {
         if (this.status !== "FINISH") {
             return Session.get('idEditing') === this._id;
-        } else {
-            return false;
-        }
-    },
-    isDeleting: function () {
-        if (this.status !== "FINISH") {
-            return Session.get('isDeleting');
         } else {
             return false;
         }
@@ -164,7 +157,7 @@ Template.wo.events({
         e.preventDefault();
         Session.set('isCreating', false); Session.set('isEditing', false);
         Session.set('idEditing', '');
-        Session.set('isDeleting', false);
+
         Session.set('idSignTo', null);
         Session.set('isSignTo', false);
     },
@@ -173,14 +166,14 @@ Template.wo.events({
         e.preventDefault();
         deleteWO();
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('hide');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
         if (this.status !== "FINISH") {
-            Session.set('isDeleting', true);
             Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaWO);
             Session.set('idDeleting', this._id);
+            $("#modal_formDeleting").modal('show');
         } else {
             FlashMessages.sendWarning('Attention, This WO has been FINISH !');
         }

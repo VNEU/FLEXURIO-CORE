@@ -14,7 +14,7 @@ Template.apimanager.created = function () {
     Session.set('namaHeader', 'DATA APIMANAGER');
     Session.set('dataDelete', '');
     Session.set('isCreating', false); Session.set('isEditing', false);
-    Session.set('isDeleting', false);
+
 
     this.autorun(function () {
         subscribtion('apimanager', Session.get('oFILTERS'), Session.get('oOPTIONS'), Session.get('limit'));
@@ -39,9 +39,6 @@ Template.apimanager.helpers({
     },
     isEditing: function () {
         return Session.get('idEditing') === this._id;
-    },
-    isDeleting: function () {
-        return Session.get('isDeleting');
     },
     isCreating: function () {
         return Session.get('isCreating');
@@ -81,20 +78,20 @@ Template.apimanager.events({
         e.preventDefault();
         Session.set('isCreating', false); Session.set('isEditing', false);
         Session.set('idEditing', '');
-        Session.set('isDeleting', false);
+
     },
 
     'click a.deleteDataOK': function (e, tpl) {
         e.preventDefault();
         deleteAPIMANAGER();
         FlashMessages.sendWarning('Attention, ' + Session.get('dataDelete') + ' successfully DELETE !');
-        Session.set('isDeleting', false);
+        $("#modal_formDeleting").modal('show');
     },
     'click a.deleteData': function (e, tpl) {
         e.preventDefault();
-        Session.set('isDeleting', true);
         Session.set('dataDelete', Session.get('namaHeader').toLowerCase() + ' ' + this.namaAPIMANAGER);
         Session.set('idDeleting', this._id);
+        $("#modal_formDeleting").modal('show');
     },
 
     'click a.create': function (e, tpl) {
