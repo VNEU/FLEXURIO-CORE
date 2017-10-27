@@ -126,34 +126,33 @@ Template.woTipe.events({
 
     'click a.create': function (e, tpl) {
         e.preventDefault();
-        Session.set('isCreating', true);
+        $("#modal_woTipe").modal('show')
     },
     'keyup #namaWOTIPE': function (e, tpl) {
         e.preventDefault();
         if (e.keyCode == 13) {
-            insertWOTIPE(tpl);
+            if(adaDATA(Session.set('idEditing'))) {
+                updateWOTIPE(tpl);
+            } else {
+                insertWOTIPE(tpl);
+            }
         }
     },
     'click a.save': function (e, tpl) {
         e.preventDefault();
-        insertWOTIPE(tpl);
+        if(adaDATA(Session.set('idEditing'))) {
+            updateWOTIPE(tpl);
+        } else {
+            insertWOTIPE(tpl);
+        }
     },
 
     'click a.editData': function (e, tpl) {
         e.preventDefault();
         Session.set('idEditing', this._id);
-    },
-    'keyup #namaEditWOTIPE': function (e, tpl) {
-        e.preventDefault();
-        if (e.keyCode == 13) {
-            updateWOTIPE(tpl);
-        }
-    },
-    'click a.saveEDIT': function (e, tpl) {
-        e.preventDefault();
-        updateWOTIPE(tpl);
+        document.getElementById('namaWOTIPE').value = this.namaWOTIPE;
+        $("#modal_woTipe").modal('show')
     }
-
 });
 
 
@@ -178,7 +177,7 @@ insertWOTIPE = function (tpl) {
             if (err) {
                 FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
             } else {
-                Session.set('isCreating', false);
+                $("#modal_woTipe").modal('hide');
                 FlashMessages.sendSuccess('Thanks, your data is successfully saved');
             }
         }
@@ -187,9 +186,9 @@ insertWOTIPE = function (tpl) {
 
 
 updateWOTIPE = function (tpl) {
-    var namaEditWOTIPE = tpl.$('input[name="namaEditWOTIPE"]').val();
+    var namaWOTIPE = tpl.$('input[name="namaWOTIPE"]').val();
 
-    if (!adaDATA(namaEditWOTIPE)) {
+    if (!adaDATA(namaWOTIPE)) {
         FlashMessages.sendWarning('Please complete all of the data to be . . .');
         return;
     }
@@ -197,7 +196,7 @@ updateWOTIPE = function (tpl) {
     WOTIPE.update({_id: Session.get('idEditing')},
         {
             $set: {
-                namaWOTIPE: namaEditWOTIPE,
+                namaWOTIPE: namaWOTIPE,
                 updateByID: UserID(),
                 updateBy: UserName(),
                 updateAt: new Date()
@@ -207,7 +206,8 @@ updateWOTIPE = function (tpl) {
             if (err) {
                 FlashMessages.sendWarning('Sorry, Data could not be saved - Please repeat again.');
             } else {
-                Session.set('idEditing', '');
+                $("#modal_woTipe").modal('hide');
+                Session.set('idEditing', null);
                 FlashMessages.sendSuccess('Thanks, your data is successfully saved');
             }
         }
@@ -215,7 +215,6 @@ updateWOTIPE = function (tpl) {
 };
 
 deleteWOTIPE = function () {
-
     if (!adaDATA(Session.get('idDeleting'))) {
         FlashMessages.sendWarning('Please select data that you want to remove . . .');
         return;

@@ -352,3 +352,8 @@ textarea:focus {
     font-family: "Raleway-Thin";
     src: url("/font/Raleway-Thin.ttf");
 }
+
+.modal {
+    top:10%;
+    height: auto !important;
+}
