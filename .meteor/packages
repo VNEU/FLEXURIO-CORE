@@ -37,7 +37,6 @@ reload@1.3.0
 service-configuration@1.0.11
 spacebars@1.0.12
 standard-minifiers@1.1.0
-fourseven:scss@3.8.0_1
 momentjs:moment
 accounts-google@1.3.2
 accounts-facebook@1.3.2
@@ -62,3 +61,4 @@ showdown@1.0.8
 msavin:mongol
 dynamic-import@0.5.1
 underscore
+fourseven:scss
